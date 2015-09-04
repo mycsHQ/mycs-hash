@@ -1,0 +1,230 @@
+{
+  "furniture_type": "shelf",
+  "camera": { "angle": 0 },
+  "is_label": false,
+  "structure": {
+    "columns": [
+      {
+        "position": 0,
+        "wallLeft": [
+          {
+            "sku": "101.105.00",
+            "label_id": "101"
+          }
+        ],
+        "wallRight": [
+          {
+            "sku": "101.111.00",
+            "label_id": "102"
+          }
+        ],
+        "fronts": [
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "103",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "303",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "109",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "309",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          }
+        ],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "label_id": "122",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "126",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "128",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "130",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "132",
+            "position": 192.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "134",
+            "position": 231.1
+          }
+        ]
+      },
+      {
+        "position": 1,
+        "wallLeft": [],
+        "wallRight": [
+          {
+            "sku": "101.111.00",
+            "label_id": "102"
+          }
+        ],
+        "fronts": [
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "103",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "303",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "109",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "309",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          }
+        ],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "label_id": "122",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "126",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "128",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "130",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "132",
+            "position": 192.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "134",
+            "position": 231.1
+          }
+        ]
+      },
+      {
+        "position": 2,
+        "wallLeft": [],
+        "wallRight": [
+          {
+            "sku": "101.105.00",
+            "label_id": "102"
+          }
+        ],
+        "fronts": [
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "103",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 0.7,
+            "sku": "101.121.00",
+            "label_id": "303",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "109",
+            "h_position": 0.3,
+            "openingDirection": "left"
+          },
+          {
+            "position": 115.9,
+            "sku": "101.121.00",
+            "label_id": "309",
+            "h_position": 36.4,
+            "openingDirection": "right"
+          }
+        ],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "label_id": "122",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "126",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "128",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "130",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "132",
+            "position": 192.7
+          },
+          {
+            "sku": "101.112.00",
+            "label_id": "134",
+            "position": 231.1
+          }
+        ]
+      }
+    ]
+  }
+}
