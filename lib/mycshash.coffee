@@ -4,6 +4,8 @@
 crypto = require('crypto')
 stringifier = require('./stringify')
 
+# should be incremented when releasing a new version
+VERSION = '0.2'
 HASH_ALGORITHM = 'sha1'
 
 #
