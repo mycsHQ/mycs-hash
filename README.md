@@ -4,16 +4,18 @@
 
 ## Install
 
+Please adapt examples below with the version you would like to use...
+
 1. client side
 
 ```sh
-$ bower install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.1
+$ bower install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
 ```
 
 2. server side
 
 ```sh
-$ npm install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.1
+$ npm install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
 ```
 
 
