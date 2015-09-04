@@ -4,9 +4,19 @@
 
 ## Install
 
+1. client side
+
 ```sh
-$ npm install --save mycs-hash
+$ bower install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.1
 ```
+
+2. server side
+
+```sh
+$ npm install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.1
+```
+
+
 
 ## Usage
 
