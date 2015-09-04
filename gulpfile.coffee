@@ -5,6 +5,7 @@ gulp =        require('gulp')
 uglify =      require('gulp-uglify')
 jasmine =     require('gulp-jasmine')
 runSequence = require('run-sequence')
+rename      = require('gulp-rename')
 browserify =  require('gulp-browserify')
 coffeelint =  require('gulp-coffeelint')
 
@@ -39,6 +40,7 @@ gulp.task('coffeelint', ->
 gulp.task('browserify', ->
   gulp.src('./src/mycshash.coffee', { read: false })
     .pipe(browserify({ transform: ['coffeeify'], extensions: ['.coffee'], debug : false }))
+    .pipe(rename('mycshash.js'))
     .pipe(gulp.dest('./build'))
 )
 
@@ -57,7 +59,7 @@ gulp.task('jasmine:unit', ->
 #
 gulp.task('minify', ->
   gulp
-    .src("build/mycshash.coffee")
+    .src("build/mycshash.js")
     .pipe(uglify(UGLIFY_OPTIONS))
     .pipe(gulp.dest("build/min/"))
 )

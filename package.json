@@ -39,6 +39,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-coffeelint": "^0.5.0",
     "gulp-jasmine": "^2.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.0",
     "json-stable-stringify": "^1.0.0",
     "sha-lite": "^0.1.5",
