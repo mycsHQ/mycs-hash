@@ -3,7 +3,7 @@ uuid = require('node-uuid')
 
 describe('test mycs-hash furniture structure hashing lib for the mycs project', ->
 
-  hashlib = require('./')
+  hashlib = require('./mycshash')
   shelf = require('./data')
 
   hmacKey = uuid.v4()

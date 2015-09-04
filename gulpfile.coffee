@@ -78,7 +78,14 @@ gulp.task('test', ->
 )
 
 #
-# Main task
+# Copy to final destination (for node)
+#
+gulp.task('copy', ->
+  gulp.src('src/**/!(*.spec)*.coffee', {}).pipe(gulp.dest('lib/'))
+)
+
+#
+# Main task : run the test and produce the distribution
 #
 gulp.task('default', ->
   runSequence(
@@ -86,6 +93,7 @@ gulp.task('default', ->
     'jasmine:unit'
     'browserify'
     'minify'
+    'copy'
     process.exit
   )
 )
