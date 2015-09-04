@@ -6,13 +6,7 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
   hashlib = require('./mycshash')
   shelf = require('./data')
 
-  hmacKey = uuid.v4()
-
   testException = (input, keyWords, done) ->
-    try
-      hashlib(input, hmacKey)
-    catch e
-      expect(e.message.indexOf(keyWords) >= 0).toBe(true)
 
     try
       hashlib(input)
@@ -69,7 +63,6 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
       camera: { angle: 0 }
     }
 
-    expect(hashlib(table1, hmacKey)).toEqual(hashlib(table2, hmacKey))
     expect(hashlib(table1)).toEqual(hashlib(table2))
     done()
 
@@ -78,7 +71,6 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
   it('should produce the expected hash', (done) ->
 
     input = _.pick(shelf, ['structure', 'furniture_type', 'camera'])
-    hmacKey = '1903201500'
 
     # @todo clarify
     # - this expected hash was flagged in the prod website (4.9.2015)
@@ -86,7 +78,7 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
     # There is a discrepancy that should not exist !!!
     # (the hash algorithm probably drifted which is what this lib is meant to prevent)
     expectedHash = '907faeaffc31ce0dcf1b519a6a3b3b19bb0a07e8'
-    expect(hashlib(input, hmacKey)).toEqual(expectedHash)
+    expect(hashlib(input)).toEqual(expectedHash)
     done()
 
   )

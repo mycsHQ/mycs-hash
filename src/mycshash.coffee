@@ -7,6 +7,14 @@ stringifier = require('./stringify')
 HASH_ALGORITHM = 'sha1'
 
 #
+# WARNING !!
+# Change this key to easily seed new collection of hashes for same set of structures
+# It is recommended to make the version of the lib evolves when you do so
+# A consequence is also that the matching with persisted hash (using different lib version) will not work
+#
+HMAC_KEY = '1903201500'
+
+#
 # Check whether the data structure passes the criteria to be further hashed
 #
 # @param {object} deserialized json object representing a piece of furniture
@@ -34,7 +42,7 @@ _validateData = (data) ->
 # @param {object} deserialized json object representing a piece of furniture
 # @param {object} (optional) hmac key used as a salt to produce the sha1 hmac hash
 #
-hashingFunction = (data, hmacKey) ->
+hashingFunction = (data) ->
 
   # validate the input
   _validateData(data)
@@ -43,12 +51,6 @@ hashingFunction = (data, hmacKey) ->
   stringToHash = stringifier.stringify(data)
 
   # create the hash
-  return crypto.createHmac(HASH_ALGORITHM, hmacKey).update(stringToHash).digest('hex') if hmacKey
-
-  hash = crypto.createHash(HASH_ALGORITHM)
-  hash.update(stringToHash)
-  toReturn = hash.digest('hex')
-  return toReturn
-
+  return crypto.createHmac(HASH_ALGORITHM, HMAC_KEY).update(stringToHash).digest('hex')
 
 module.exports = hashingFunction
