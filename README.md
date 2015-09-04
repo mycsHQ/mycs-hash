@@ -1,5 +1,5 @@
-# mycs-hash [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Library exposing a generation hashing function for mycs system
+# mycs-hash
+> Library exposing a consistent hash generation function for the mycs api and clients application.
 
 
 ## Install
@@ -8,8 +8,13 @@
 $ npm install --save mycs-hash
 ```
 
-
 ## Usage
+
+The function validates that the furniture data structure has :
+- `structure` attribute describing the modules that constitute the piece of furniture
+- `is_label` whether the image created should be a label image or a normal one
+- `furniture_type` the type furniture that is meant to be described by the structure
+- `camera` the camera setup
 
 ```js
 var mycsHash = require('mycs-hash');
