@@ -1,5 +1,3 @@
-_ = require('lodash')
-
 #
 # Class to serialize JSON in stable way :
 # it prevent ordering of the keys. This allows for instance
@@ -46,15 +44,6 @@ class StableJSONStringify
     @cycles = if typeof @opts.cycles is 'boolean' then @opts.cycles else false
     @replacer = @opts.replacer || (key, value) -> value
 
-    @cmp = @opts.cmp and (
-      (f) ->
-        (node) ->
-          (a, b) ->
-            aobj = { key: a, value: node[a] }
-            bobj = { key: b, value: node[b] }
-            f(aobj, bobj)
-    )(@opts.cmp)
-
     @seen = []
 
 
@@ -96,7 +85,7 @@ class StableJSONStringify
       else
         @seen.push(node)
 
-      keys = _.keys(node).sort(@cmp and @cmp(node))
+      keys = Object.keys(node).sort()
       out = []
       for i in [0...keys.length]
         key = keys[i]

@@ -2,7 +2,6 @@
 # External dependencies
 #
 gulp =        require('gulp')
-rename =      require('gulp-rename')
 uglify =      require('gulp-uglify')
 jasmine =     require('gulp-jasmine')
 runSequence = require('run-sequence')
@@ -10,7 +9,6 @@ browserify =  require('gulp-browserify')
 coffeelint =  require('gulp-coffeelint')
 
 COFFEE_SRC = 'src/**/*.coffee'
-TARGET_LIB_NAME = 'hashlib'
 UGLIFY_OPTIONS = {
   mangle: true
   compress: {
@@ -39,9 +37,8 @@ gulp.task('coffeelint', ->
 # Browserify
 #
 gulp.task('browserify', ->
-  gulp.src('./src/index.coffee', { read: false })
+  gulp.src('./src/mycshash.coffee', { read: false })
     .pipe(browserify({ transform: ['coffeeify'], extensions: ['.coffee'], debug : false }))
-    .pipe(rename("#{ TARGET_LIB_NAME }.js"))
     .pipe(gulp.dest('./build'))
 )
 
@@ -60,7 +57,7 @@ gulp.task('jasmine:unit', ->
 #
 gulp.task('minify', ->
   gulp
-    .src("build/#{ TARGET_LIB_NAME }.js")
+    .src("build/mycshash.coffee")
     .pipe(uglify(UGLIFY_OPTIONS))
     .pipe(gulp.dest("build/min/"))
 )

@@ -14,4 +14,3 @@ describe('test the stable serialization of javascript objects', ->
   )
 
 )
-
