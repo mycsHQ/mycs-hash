@@ -2,7 +2,7 @@
 # External dependencies
 #
 crypto = require('crypto')
-stringify = require('json-stable-stringify')
+stringifier = require('./stringify')
 
 HASH_ALGORITHM = 'sha1'
 
@@ -20,14 +20,14 @@ _validateData = (data) ->
   unless data.hasOwnProperty('camera')
     throw new Error('missing camera attribute')
 
-  unless data.hasOwnProperty('is_label')
-    throw new Error('missing is_label attribute')
-
   unless data.hasOwnProperty('structure')
     throw new Error('missing structure attribute')
 
-  unless Object.keys(data).length is 4
-    throw new Error('there should not be any other attribute than camera, is_label, furniture_type and structure')
+  unless data.is_label or !data.hasOwnProperty('is_label')
+    throw new Error('is_label must be present with true value or not present')
+
+  unless Object.keys(data).length is 4 or Object.keys(data).length is 3 and !data.hasOwnProperty('is_label')
+    throw new Error('there should exactly be the attributes camera, furniture_type, structure and optionally is_label')
 
 
 #
@@ -40,7 +40,7 @@ hashingFunction = (data, hmacKey) ->
   _validateData(data)
 
   # produce the serialized json to be hashed
-  stringToHash = stringify(data)
+  stringToHash = stringifier.stringify(data)
 
   # create the hash
   return crypto.createHmac(HASH_ALGORITHM, hmacKey).update(stringToHash).digest('hex') if hmacKey
