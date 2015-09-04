@@ -18,8 +18,6 @@ $ bower install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
 $ npm install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
 ```
 
-
-
 ## Usage
 
 The function validates that the furniture data structure has :
