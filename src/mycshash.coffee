@@ -1,12 +1,12 @@
 #
 # External dependencies
 #
-crypto = require('crypto')
+jsSHA = require('jssha')
 stringifier = require('./stringify')
 
 # should be incremented when releasing a new version
 VERSION = '0.2'
-HASH_ALGORITHM = 'sha1'
+HASH_ALGORITHM = 'SHA-1'
 
 #
 # WARNING !!
@@ -52,7 +52,9 @@ hashingFunction = (data) ->
   # produce the serialized json to be hashed
   stringToHash = stringifier.stringify(data)
 
-  # create the hash
-  return crypto.createHmac(HASH_ALGORITHM, HMAC_KEY).update(stringToHash).digest('hex')
+  shaObj = new jsSHA(HASH_ALGORITHM, "TEXT")
+  shaObj.setHMACKey(HMAC_KEY, "TEXT")
+  shaObj.update(stringToHash)
+  return shaObj.getHMAC("HEX");
 
 module.exports = hashingFunction

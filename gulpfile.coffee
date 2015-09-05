@@ -6,8 +6,11 @@ uglify =      require('gulp-uglify')
 jasmine =     require('gulp-jasmine')
 runSequence = require('run-sequence')
 rename      = require('gulp-rename')
-browserify =  require('gulp-browserify')
-coffeelint =  require('gulp-coffeelint')
+browserify  = require('browserify')
+coffeelint  = require('gulp-coffeelint')
+coffeeify   = require('coffeeify')
+uglifyify   = require('uglifyify')
+source      = require 'vinyl-source-stream'
 
 COFFEE_SRC = 'src/**/*.coffee'
 UGLIFY_OPTIONS = {
@@ -19,7 +22,6 @@ UGLIFY_OPTIONS = {
     warnings: false
   }
 }
-
 
 ##################################
 #
@@ -37,12 +39,30 @@ gulp.task('coffeelint', ->
 #
 # Browserify
 #
-gulp.task('browserify', ->
-  gulp.src('./src/mycshash.coffee', { read: false })
-    .pipe(browserify({ transform: ['coffeeify'], extensions: ['.coffee'], debug : false }))
-    .pipe(rename('mycshash.js'))
-    .pipe(gulp.dest('./build'))
+gulp.task('js', ->
+  browserify(
+    {
+      entries: './src/stringify.coffee'
+      extensions: [ '.coffee' ]
+      transform: [ 'coffeeify' ]
+      expose: 'mycshash'
+    }
+  )
+    .require('./src/mycshash.coffee', { expose: 'mycshash' })
+    .bundle().pipe(source('mycshash.js')).pipe(gulp.dest('./build'))
 )
+
+#
+# Minification task)
+#
+gulp.task('minify', ->
+  gulp
+    .src('./build/**/*.js')
+    .pipe(uglify(UGLIFY_OPTIONS))
+    .pipe(gulp.dest('build/min'))
+)
+
+
 
 #
 # Jasmine unit tests
@@ -53,17 +73,6 @@ gulp.task('jasmine:unit', ->
     .pipe(jasmine())
     .on('error', process.exit.bind(process, 1))
 )
-
-#
-# Minify file
-#
-gulp.task('minify', ->
-  gulp
-    .src("build/mycshash.js")
-    .pipe(uglify(UGLIFY_OPTIONS))
-    .pipe(gulp.dest("build/min/"))
-)
-
 
 #
 # Run unit tests
@@ -77,7 +86,7 @@ gulp.task('test', ->
 )
 
 #
-# Copy to final destination (for node)
+# Copy to final destination (for node require to work)
 #
 gulp.task('copy', ->
   gulp.src('src/**/!(*.spec)*.coffee', {}).pipe(gulp.dest('lib/'))
@@ -90,9 +99,9 @@ gulp.task('default', ->
   runSequence(
     'coffeelint'
     'jasmine:unit'
-    'browserify'
-    'minify'
-    'copy'
+    'js'             # for client side distribution
+    'minify'         # for client side distribution
+    'copy'           # for server side distribution
     process.exit
   )
 )
