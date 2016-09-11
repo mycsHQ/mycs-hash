@@ -156,7 +156,7 @@ _validateData = function(data) {
   if (!(data.is_label || !data.hasOwnProperty('is_label'))) {
     throw new Error('is_label must be present with true value or not present');
   }
-  if (!(Object.keys(data).length === 4 || Object.keys(data).length === 3 && !data.hasOwnProperty('is_label'))) {
+  if (!(Object.keys(data).length === 5 || Object.keys(data).length === 3 && !data.hasOwnProperty('is_label') && !data.hasOwnProperty('stage') || Object.keys(data).length === 4 && (!data.hasOwnProperty('is_label') || !data.hasOwnProperty('stage')))) {
     throw new Error('there should exactly be the attributes camera, furniture_type, structure and optionally is_label');
   }
 };
