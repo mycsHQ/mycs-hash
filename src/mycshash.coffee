@@ -36,7 +36,8 @@ _validateData = (data) ->
   unless data.is_label or !data.hasOwnProperty('is_label')
     throw new Error('is_label must be present with true value or not present')
 
-  unless Object.keys(data).length is 4 or Object.keys(data).length is 3 and !data.hasOwnProperty('is_label')
+  unless Object.keys(data).length is 5 or Object.keys(data).length is 3 and !data.hasOwnProperty('is_label') and !data.hasOwnProperty('stage') or Object.keys(data).length is 4 and (!data.hasOwnProperty('is_label') or !data.hasOwnProperty('stage'))
+
     throw new Error('there should exactly be the attributes camera, furniture_type, structure and optionally is_label')
 
 
@@ -55,6 +56,6 @@ hashingFunction = (data) ->
   shaObj = new jsSHA(HASH_ALGORITHM, "TEXT")
   shaObj.setHMACKey(HMAC_KEY, "TEXT")
   shaObj.update(stringToHash)
-  return shaObj.getHMAC("HEX");
+  return shaObj.getHMAC("HEX")
 
 module.exports = hashingFunction
