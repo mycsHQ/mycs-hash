@@ -37,7 +37,7 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
   )
 
   it('should not accept input with other attributes', (done) ->
-    input = _.pick(shelf, ['structure', 'furniture_type', 'camera', 'tags', 'is_label'])
+    input = _.pick(shelf, ['structure', 'furniture_type', 'camera', 'tags', 'is_label', 'quality'])
     testException(input, 'other attribute', done)
   )
 
@@ -50,10 +50,12 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
         test: 'test'
         test2: 'test2'
         test3: 'test3'
-      }
+      },
+      quality: 'hires'
     }
 
     table2 = {
+      quality: 'hires'
       furniture_type: 'table'
       structure: {
         test3: 'test3'
@@ -70,14 +72,14 @@ describe('test mycs-hash furniture structure hashing lib for the mycs project', 
 
   it('should produce the expected hash', (done) ->
 
-    input = _.pick(shelf, ['structure', 'furniture_type', 'camera'])
+    input = _.pick(shelf, ['structure', 'furniture_type', 'camera', 'quality'])
 
     # @todo clarify
     # - this expected hash was flagged in the prod website (4.9.2015)
     # - the hash in the data.json is the one in the prod database the same day
     # There is a discrepancy that should not exist !!!
     # (the hash algorithm probably drifted which is what this lib is meant to prevent)
-    expectedHash = '907faeaffc31ce0dcf1b519a6a3b3b19bb0a07e8'
+    expectedHash = '76e7b1362a1410d5c5e92e53c07b267bf5bc2d98'
     expect(hashlib(input)).toEqual(expectedHash)
     done()
 

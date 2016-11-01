@@ -14,7 +14,7 @@ HASH_ALGORITHM = 'SHA-1'
 # It is recommended to make the version of the lib evolves when you do so
 # A consequence is also that the matching with persisted hash (using different lib version) will not work
 #
-HMAC_KEY = '1903201500'
+HMAC_KEY = '0111201600'
 
 #
 # Check whether the data structure passes the criteria to be further hashed
@@ -37,9 +37,10 @@ _validateData = (data) ->
     throw new Error('is_label must be present with true value or not present')
 
   unless Object.keys(data).length is 5 or Object.keys(data).length is 3 and !data.hasOwnProperty('is_label') and !data.hasOwnProperty('stage') or Object.keys(data).length is 4 and (!data.hasOwnProperty('is_label') or !data.hasOwnProperty('stage'))
-
     throw new Error('there should exactly be the attributes camera, furniture_type, structure and optionally is_label')
 
+  unless data.hasOwnProperty('quality')
+    throw new Error('missing quality attribute')
 
 #
 # @param {object} deserialized json object representing a piece of furniture

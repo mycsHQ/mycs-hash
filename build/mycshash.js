@@ -141,7 +141,7 @@ VERSION = '0.2';
 
 HASH_ALGORITHM = 'SHA-1';
 
-HMAC_KEY = '1903201500';
+HMAC_KEY = '0111201600';
 
 _validateData = function(data) {
   if (!data.hasOwnProperty('furniture_type')) {
@@ -158,6 +158,9 @@ _validateData = function(data) {
   }
   if (!(Object.keys(data).length === 5 || Object.keys(data).length === 3 && !data.hasOwnProperty('is_label') && !data.hasOwnProperty('stage') || Object.keys(data).length === 4 && (!data.hasOwnProperty('is_label') || !data.hasOwnProperty('stage')))) {
     throw new Error('there should exactly be the attributes camera, furniture_type, structure and optionally is_label');
+  }
+  if (!data.hasOwnProperty('quality')) {
+    throw new Error('missing quality attribute');
   }
 };
 
