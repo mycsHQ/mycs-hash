@@ -1,5 +1,7 @@
 _ = require('lodash')
 
+
+
 describe('test the stable serialization of javascript objects', ->
 
   shelf = require('./data')

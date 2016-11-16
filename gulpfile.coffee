@@ -42,14 +42,13 @@ gulp.task('coffeelint', ->
 gulp.task('js', ->
   browserify(
     {
-      entries: './src/stringify.coffee'
+      entries: './src/mycshash.coffee'
       extensions: [ '.coffee' ]
       transform: [ 'coffeeify' ]
       expose: 'mycshash'
     }
   )
-    .require('./src/mycshash.coffee', { expose: 'mycshash' })
-    .bundle().pipe(source('mycshash.js')).pipe(gulp.dest('./build'))
+  .bundle().pipe(source('mycshash.js')).pipe(gulp.dest('./build'))
 )
 
 #
