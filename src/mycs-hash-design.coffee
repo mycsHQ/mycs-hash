@@ -3,11 +3,11 @@
 #
 jsSHA = require('jssha')
 stringifier = require('./stringify')
-Validator = require('jsonschema').Validator
-v = new Validator()
+V = require('jsonschema').Validator
+validator = new V()
 
 shelfSchema = require('./schema/shelf-schema.json')
-couchTableSchema = require('./schema/couchtable-schema.json')
+couchtableSchema = require('./schema/couchtable-schema.json')
 tableSchema = require('./schema/table-schema.json')
 wardrobeSchema = require('./schema/wardrobe-schema.json')
 
@@ -50,15 +50,15 @@ _cloneDeep = (obj) -> JSON.parse(JSON.stringify(obj))
 _validateSchema = (structure) ->
   structure = _cloneDeep(structure)
 
-  shelfRes = v.validate(structure, shelfSchema)
-  couchTableRes = v.validate(structure, couchTableSchema)
-  tableRes = v.validate(structure, tableSchema)
-  wardrobeRes = v.validate(structure, wardrobeSchema)
+  shelfRes = validator.validate(structure, shelfSchema)
+  couchtableRes = validator.validate(structure, couchtableSchema)
+  tableRes = validator.validate(structure, tableSchema)
+  wardrobeRes = validator.validate(structure, wardrobeSchema)
 
-  if shelfRes.errors.length and couchTableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
+  if shelfRes.errors.length and couchtableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
     error = {
       shelf: shelfRes.errors
-      couchTable: couchTableRes.errors
+      couchtable: couchtableRes.errors
       table: tableRes.errors
       wardrobe: wardrobeRes.errors
     }

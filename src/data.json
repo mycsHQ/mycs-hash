@@ -1,226 +1,509 @@
 {
-  "uuid": "LwAf6LoS",
-  "furniture_type": "shelf",
-  "quality": "hires",
-  "structure": {
-    "columns": [
-      {
-        "position": 0,
-        "wallLeft": [{"sku": "101.105.02"}],
-        "wallRight": [{"sku": "101.105.02"}],
-        "fronts": [],
-        "boards": [
-          {
-            "sku": "101.112.00",
-            "position": 0.7
-          },
-          {
-            "sku": "101.112.00",
-            "position": 115.9
-          },
-          {
-            "sku": "101.112.00",
-            "position": 39.1
-          },
-          {
-            "sku": "101.112.00",
-            "position": 192.7
-          },
-          {
-            "position": 231.1,
-            "sku": "101.112.00"
-          },
-          {
-            "sku": "101.112.00",
-            "position": 154.3
-          },
-          {
-            "sku": "101.112.00",
-            "position": 77.5
-          }
-        ]
-      },
-      {
-        "position": 1,
-        "wallRight": [{"sku": "101.105.02"}],
-        "wallLeft": [],
-        "fronts": [],
-        "boards": [
-          {
-            "sku": "101.112.00",
-            "position": 0.7
-          },
-          {
-            "sku": "101.112.00",
-            "position": 115.9
-          },
-          {
-            "sku": "101.112.00",
-            "position": 77.5
-          },
-          {
-            "sku": "101.112.00",
-            "position": 192.7
-          },
-          {
-            "position": 231.1,
-            "sku": "101.112.00"
-          },
-          {
-            "sku": "101.112.00",
-            "position": 154.3
-          },
-          {
-            "sku": "101.112.00",
-            "position": 39.1
-          }
-        ]
-      },
-      {
-        "position": 2,
-        "wallRight": [{"sku": "101.105.02"}],
-        "wallLeft": [],
-        "fronts": [],
-        "boards": [
-          {
-            "sku": "101.112.00",
-            "position": 0.7
-          },
-          {
-            "sku": "101.112.00",
-            "position": 115.9
-          },
-          {
-            "sku": "101.112.00",
-            "position": 77.5
-          },
-          {
-            "sku": "101.112.00",
-            "position": 192.7
-          },
-          {
-            "position": 231.1,
-            "sku": "101.112.00"
-          },
-          {
-            "sku": "101.112.00",
-            "position": 154.3
-          },
-          {
-            "sku": "101.112.00",
-            "position": 39.1
-          }
-        ]
-      },
-      {
-        "position": 3,
-        "wallRight": [{"sku": "101.105.02"}],
-        "wallLeft": [],
-        "fronts": [],
-        "boards": [
-          {
-            "sku": "101.112.00",
-            "position": 0.7
-          },
-          {
-            "sku": "101.112.00",
-            "position": 115.9
-          },
-          {
-            "sku": "101.112.00",
-            "position": 77.5
-          },
-          {
-            "sku": "101.112.00",
-            "position": 192.7
-          },
-          {
-            "position": 231.1,
-            "sku": "101.112.00"
-          },
-          {
-            "sku": "101.112.00",
-            "position": 154.3
-          },
-          {
-            "sku": "101.112.00",
-            "position": 39.1
-          }
-        ]
-      }
-    ]
-  },
-  "image_url": "//www.mycs.com/assets/cae7aebbfabd83c9aa10e5e37cb6bce1ac567517.jpg",
-  "status": "done",
-  "created_at": "2015-06-17T10:10:37.726Z",
-  "updated_at": "2015-07-31T15:38:34.953Z",
-  "is_inspiration": true,
-  "name": null,
-  "tags": {
-    "best-sellers": 2322,
-    "big": 4693,
-    "designertables": 8140,
-    "desks-berlin": 253,
-    "desks-office-tables": 1186,
-    "desks-white": 1566,
-    "desks-work-tables": 300,
-    "desks": 8340,
-    "dining-tables-berlin": 2714,
-    "dining-tables-big": 2503,
-    "dining-tables-darkbrown": 9624,
-    "dining-tables-light": 6241,
-    "dining-tables-modern": 6081,
-    "dining-tables-oak": 6371,
-    "dining-tables-small": 3989,
-    "dining-tables-solid-wood": 8884,
-    "dining-tables-white": 5952,
-    "dining-tables-wood": 6750,
-    "dining-tables": 611,
-    "kitchen-tables-solid-wood": 7194,
-    "kitchen-tables": 802,
-    "wood-tables-solid-wood": 9718,
-    "wood-tables": 1131,
-    "tables": 5052,
-    "all": 7383
-  },
-  "colors": null,
-  "specs": {
-    "doors": 0,
-    "drawers": 0
-  },
-  "dimensions": {
-    "height": 2323,
-    "length": 2999,
-    "width": 342
-  },
-  "price": {
-    "at": {
-      "totalPrice": 722.6890756302521,
-      "totalPriceInclTaxes": 860,
-      "taxes": 137.3109243697479,
-      "taxPercentage": 19,
-      "currencyCode": "EUR",
-      "shippingDuration": 1
+  "shelf": {
+    "camera": {
+      "angle": 0
     },
-    "ch": {
-      "totalPrice": 837.037037037037,
-      "totalPriceInclTaxes": 904,
-      "taxes": 66.96296296296305,
-      "taxPercentage": 8,
-      "currencyCode": "CHF",
-      "shippingDuration": 1
-    },
-    "de": {
-      "totalPrice": 673.109243697479,
-      "totalPriceInclTaxes": 801,
-      "taxes": 127.89075630252103,
-      "taxPercentage": 19,
-      "currencyCode": "EUR",
-      "shippingDuration": 1
+    "quality": "hires",
+    "structure": {
+      "columns": [
+        {
+          "position": 0,
+          "wallLeft": [
+            {
+              "sku": "101.105.02"
+            }
+          ],
+          "wallRight": [
+            {
+              "sku": "101.105.02"
+            }
+          ],
+          "fronts": [],
+          "boards": [
+            {
+              "sku": "101.112.00",
+              "position": 0.7
+            },
+            {
+              "sku": "101.112.00",
+              "position": 115.9
+            },
+            {
+              "sku": "101.112.00",
+              "position": 39.1
+            },
+            {
+              "sku": "101.112.00",
+              "position": 192.7
+            },
+            {
+              "position": 231.1,
+              "sku": "101.112.00"
+            },
+            {
+              "sku": "101.112.00",
+              "position": 154.3
+            },
+            {
+              "sku": "101.112.00",
+              "position": 77.5
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "wallRight": [
+            {
+              "sku": "101.105.02"
+            }
+          ],
+          "wallLeft": [],
+          "fronts": [],
+          "boards": [
+            {
+              "sku": "101.112.00",
+              "position": 0.7
+            },
+            {
+              "sku": "101.112.00",
+              "position": 115.9
+            },
+            {
+              "sku": "101.112.00",
+              "position": 77.5
+            },
+            {
+              "sku": "101.112.00",
+              "position": 192.7
+            },
+            {
+              "position": 231.1,
+              "sku": "101.112.00"
+            },
+            {
+              "sku": "101.112.00",
+              "position": 154.3
+            },
+            {
+              "sku": "101.112.00",
+              "position": 39.1
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "wallRight": [
+            {
+              "sku": "101.105.02"
+            }
+          ],
+          "wallLeft": [],
+          "fronts": [],
+          "boards": [
+            {
+              "sku": "101.112.00",
+              "position": 0.7
+            },
+            {
+              "sku": "101.112.00",
+              "position": 115.9
+            },
+            {
+              "sku": "101.112.00",
+              "position": 77.5
+            },
+            {
+              "sku": "101.112.00",
+              "position": 192.7
+            },
+            {
+              "position": 231.1,
+              "sku": "101.112.00"
+            },
+            {
+              "sku": "101.112.00",
+              "position": 154.3
+            },
+            {
+              "sku": "101.112.00",
+              "position": 39.1
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "wallRight": [
+            {
+              "sku": "101.105.02"
+            }
+          ],
+          "wallLeft": [],
+          "fronts": [],
+          "boards": [
+            {
+              "sku": "101.112.00",
+              "position": 0.7
+            },
+            {
+              "sku": "101.112.00",
+              "position": 115.9
+            },
+            {
+              "sku": "101.112.00",
+              "position": 77.5
+            },
+            {
+              "sku": "101.112.00",
+              "position": 192.7
+            },
+            {
+              "position": 231.1,
+              "sku": "101.112.00"
+            },
+            {
+              "sku": "101.112.00",
+              "position": 154.3
+            },
+            {
+              "sku": "101.112.00",
+              "position": 39.1
+            }
+          ]
+        }
+      ]
     }
   },
-  "hash": "cae7aebbfabd83c9aa10e5e37cb6bce1ac567517",
-  "is_verified": true,
-  "image_type": "final",
-  "camera": {"angle": 0}
+  "wardrobe": {
+    "camera": {"angle": 0},
+    "quality": "hires",
+    "structure": {
+      "outer_wall_left": {
+        "sku": "102.105.00"
+      },
+      "outer_wall_right": {
+        "sku": "102.105.00"
+      },
+      "columns": [
+        {
+          "corpus": {
+            "sku": "401.100.04"
+          },
+          "boards": [
+            {
+              "sku": "102.103.00",
+              "z": 38.3
+            },
+            {
+              "z": 76.7,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 153.5,
+              "sku": "102.103.00"
+            }
+          ],
+          "doors": [
+            {
+              "door": {
+                "sku": "102.107.08"
+              },
+              "handles": [
+                {
+                  "sku": "102.108.00"
+                },
+                {
+                  "sku": "102.108.02"
+                }
+              ]
+            }
+          ],
+          "cloth_rails": [],
+          "backwall": {
+            "sku": "000.002.08"
+          },
+          "drawers": [
+            {
+              "sku": "401.100.164",
+              "z": 147
+            }
+          ],
+          "cluster": 0
+        },
+        {
+          "corpus": {
+            "sku": "401.100.04"
+          },
+          "boards": [
+            {
+              "sku": "102.103.00",
+              "z": 38.3
+            },
+            {
+              "z": 76.7,
+              "sku": "102.103.00"
+            }
+          ],
+          "doors": [
+            {
+              "door": {
+                "sku": "102.107.00"
+              },
+              "handles": [
+                {
+                  "sku": "102.108.00"
+                },
+                {
+                  "sku": "102.108.00"
+                }
+              ]
+            }
+          ],
+          "cloth_rails": [],
+          "backwall": {
+            "sku": "000.002.08"
+          },
+          "drawers": [
+            {
+              "sku": "401.100.134",
+              "z": 3
+            },
+            {
+              "sku": "401.100.134",
+              "z": 22.2
+            },
+            {
+              "sku": "401.100.134",
+              "z": 41.4
+            },
+            {
+              "sku": "401.100.134",
+              "z": 60.6
+            },
+            {
+              "sku": "401.100.126",
+              "z": 79.8
+            }
+          ],
+          "lifts": [
+            {
+              "sku": "401.100.117",
+              "z": 213.50000000000003
+            }
+          ],
+          "cluster": 0
+        },
+        {
+          "corpus": {
+            "sku": "401.100.04"
+          },
+          "boards": [
+            {
+              "sku": "102.103.00",
+              "z": 38.3
+            },
+            {
+              "z": 76.7,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 115.1,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 153.5,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 191.9,
+              "sku": "102.103.00"
+            }
+          ],
+          "doors": [
+            {
+              "door": {
+                "sku": "102.107.08"
+              },
+              "handles": [
+                {
+                  "sku": "102.108.00"
+                },
+                {
+                  "sku": "102.108.00"
+                }
+              ]
+            }
+          ],
+          "cloth_rails": [],
+          "backwall": {
+            "sku": "000.002.08"
+          },
+          "drawers": [
+            {
+              "sku": "401.100.147",
+              "z": 41.4
+            },
+            {
+              "sku": "401.100.147",
+              "z": 60.6
+            },
+            {
+              "sku": "401.100.147",
+              "z": 79.8
+            }
+          ],
+          "cluster": 0
+        },
+        {
+          "corpus": {
+            "sku": "401.100.05"
+          },
+          "boards": [
+            {
+              "sku": "102.103.00",
+              "z": 38.3
+            },
+            {
+              "z": 153.5,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 191.9,
+              "sku": "102.103.00"
+            }
+          ],
+          "doors": [
+            {
+              "door": {
+                "sku": "102.107.00"
+              },
+              "handles": [
+                {
+                  "sku": "401.100.104"
+                },
+                {
+                  "sku": "401.100.104"
+                }
+              ]
+            }
+          ],
+          "cloth_rails": [
+            {
+              "sku": "102.119.01",
+              "z": 148.4
+            }
+          ],
+          "drawers": [],
+          "backwall": {
+            "sku": "000.002.02"
+          },
+          "cluster": 1
+        },
+        {
+          "corpus": {
+            "sku": "401.100.04"
+          },
+          "boards": [
+            {
+              "sku": "102.103.00",
+              "z": 38.3
+            },
+            {
+              "z": 76.7,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 115.1,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 153.5,
+              "sku": "102.103.00"
+            },
+            {
+              "z": 191.9,
+              "sku": "102.103.00"
+            }
+          ],
+          "doors": [
+            {
+              "door": {
+                "sku": "102.107.00"
+              },
+              "handles": [
+                {
+                  "sku": "401.100.104"
+                },
+                {
+                  "sku": "401.100.104"
+                }
+              ]
+            }
+          ],
+          "cloth_rails": [],
+          "drawers": [],
+          "backwall": {
+            "sku": "000.002.08"
+          },
+          "cluster": 1
+        }
+      ]
+    }
+  },
+  "table": {
+    "camera": {"angle": 30},
+    "quality": "normal",
+    "structure": {
+      "tops": {
+        "tabletop": {
+          "sku": "301.100.00"
+        }
+      },
+      "legs": {
+        "left": {
+          "sku": "301.112.03"
+        },
+        "right": {
+          "sku": "301.112.21"
+        }
+      }
+    }
+  },
+  "couchtable": {
+    "camera": {"angle": 30},
+    "quality": "normal",
+    "structure": [
+      {
+        "ctop": {
+          "sku": "302.100.10"
+        },
+        "clegs": {
+          "front_right": {
+            "sku": "302.105.03"
+          },
+          "front_left": {
+            "sku": "302.105.03"
+          },
+          "back": {
+            "sku": "302.105.03"
+          }
+        }
+      },
+      {
+        "ctop": {
+          "sku": "302.100.05"
+        },
+        "clegs": {
+          "front_right": {
+            "sku": "302.105.01"
+          },
+          "front_left": {
+            "sku": "302.105.01"
+          },
+          "back": {
+            "sku": "302.105.01"
+          }
+        }
+      }
+    ]
+  }
 }

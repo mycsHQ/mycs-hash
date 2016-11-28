@@ -4,7 +4,7 @@ uuid = require('node-uuid')
 describe('test mycs-hash-image furniture structure hashing lib for the mycs project', ->
 
   hashImage = require('./mycs-hash-image')
-  shelf = require('./data')
+  shelf = require('./data').shelf
 
   testException = (input, keyWords, done) ->
 

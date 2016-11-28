@@ -3,6 +3,13 @@
 #
 jsSHA = require('jssha')
 stringifier = require('./stringify')
+V = require('jsonschema').Validator
+validator = new V()
+
+shelfSchema = require('./schema/shelf-schema.json')
+couchtableSchema = require('./schema/couchtable-schema.json')
+tableSchema = require('./schema/table-schema.json')
+wardrobeSchema = require('./schema/wardrobe-schema.json')
 
 # should be incremented when releasing a new version
 VERSION = '0.2'
@@ -36,6 +43,28 @@ _validateData = (data) ->
 _cloneDeep = (obj) -> JSON.parse(JSON.stringify(obj))
 
 #
+# Check by jsonSchema for all furniture types
+#
+# @param {object} structure
+#
+_validateSchema = (structure) ->
+  structure = _cloneDeep(structure)
+
+  shelfRes = validator.validate(structure, shelfSchema)
+  couchtableRes = validator.validate(structure, couchtableSchema)
+  tableRes = validator.validate(structure, tableSchema)
+  wardrobeRes = validator.validate(structure, wardrobeSchema)
+
+  if shelfRes.errors.length and couchtableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
+    error = {
+      shelf: shelfRes.errors
+      couchtable: couchtableRes.errors
+      table: tableRes.errors
+      wardrobe: wardrobeRes.errors
+    }
+    throw new Error('structure is invalid for any existing scheme' + JSON.stringify(error, null, 2))
+
+#
 # Hashing function
 #
 # @param {object} data deserialized json object representing a piece of furniture
@@ -44,6 +73,7 @@ hashingFunction = (data) ->
   data = _cloneDeep(data)
   # validate the input
   _validateData(data)
+  _validateSchema(data.structure)
 
   # produce the serialized json to be hashed
   stringToHash = stringifier.stringify(data)
