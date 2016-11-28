@@ -12,8 +12,9 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
       hashDesign(input)
     catch e
       expect(e.message.indexOf(keyWords) >= 0).toBe(true)
+      return done()
 
-    done()
+    throw new Error("should be throw Exception: #{keyWords}")
 
   it('should not accept input without structure', (done) ->
     input = {}
@@ -28,19 +29,25 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
   it('should produce the same hash for different attribute order', (done) ->
 
     table1 = {
-      structure: {
-        test: 'test'
-        test2: 'test2'
-        test3: 'test3'
-      }
+      structure: [{
+        clegs: {
+          back: { sku: 'sku' },
+          front_left: { sku: 'sku' },
+          front_right: { sku: 'sku' },
+        },
+        ctop: { sku: 'sku' }
+      }]
     }
 
     table2 = {
-      structure: {
-        test3: 'test3'
-        test: 'test'
-        test2: 'test2'
-      }
+      structure: [{
+        clegs: {
+          front_right: { sku: 'sku' },
+          front_left: { sku: 'sku' },
+          back: { sku: 'sku' },
+        },
+        ctop: { sku: 'sku' }
+      }]
     }
 
     expect(hashDesign(table1)).toEqual(hashDesign(table2))
@@ -61,6 +68,16 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
     expect(hashDesign(input)).toEqual(expectedHash)
     done()
 
+  )
+
+  it('should not accept input with invalid structure', (done) ->
+    input = _.pick(shelf, ['structure'])
+
+    copyInput = _.cloneDeep(input)
+    copyInput.structure['field'] = {}
+    testException(copyInput, 'structure is invalid', done)
+
+    done()
   )
 
 )
