@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furnitures/wardrobes",
+  "id": "http://mycs.com/schemas/furniture/wardrobes",
   "definitions": {
     "sku": {
       "type": "string",

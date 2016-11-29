@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://mycs.com/schemas/furniture/wardrobes",
+  "definitions": {
+    "sku": {
+      "type": "string",
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "cluster": {
+      "type": "integer",
+      "description": "id to mark a group of columns belonging to the same sliding door system"
+    },
+    "z": {
+      "type": "number",
+      "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus"
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "sku" ],
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" }
+      }
+    },
+    "positioned_element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "sku", "z" ],
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" },
+        "z": { "$ref": "#/definitions/z" }
+      }
+    },
+    "positioned_elements": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 0,
+      "items": { "$ref": "#/definitions/positioned_element" }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [ "outer_wall_left", "outer_wall_right", "columns" ],
+  "properties": {
+    "outer_wall_left": { "$ref": "#/definitions/element" },
+    "outer_wall_right": { "$ref": "#/definitions/element" },
+    "columns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [ "cluster", "corpus", "backwall" ],
+        "properties": {
+          "cluster": { "$ref": "#/definitions/cluster" },
+          "corpus": { "$ref": "#/definitions/element" },
+          "doors": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [ "door", "handles" ],
+              "properties": {
+                "door": { "$ref": "#/definitions/element" },
+                "handles": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "$ref": "#/definitions/element" }
+                }
+              }
+            }
+          },
+          "boards": { "$ref": "#/definitions/positioned_elements" },
+          "drawers": { "$ref": "#/definitions/positioned_elements" },
+          "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
+          "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
+          "lifts": { "$ref": "#/definitions/positioned_elements" },
+          "backwall": { "$ref": "#/definitions/element" }
+        }
+      }
+    }
+  }
+}

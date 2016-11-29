@@ -3,6 +3,13 @@
 #
 jsSHA = require('jssha')
 stringifier = require('./stringify')
+V = require('jsonschema').Validator
+validator = new V()
+
+shelfSchema = require('./json-schemas/shelf-image.json')
+couchtableSchema = require('./json-schemas/couchtable-image.json')
+tableSchema = require('./json-schemas/table-image.json')
+wardrobeSchema = require('./json-schemas/wardrobe-image.json')
 
 # should be incremented when releasing a new version
 VERSION = '0.2'
@@ -15,6 +22,13 @@ HASH_ALGORITHM = 'SHA-1'
 # A consequence is also that the matching with persisted hash (using different lib version) will not work
 #
 HMAC_KEY = '0111201600'
+
+#
+# Clone deep
+#
+# @param {object} obj
+#
+_cloneDeep = (obj) -> JSON.parse(JSON.stringify(obj))
 
 #
 # Check whether the data structure passes the criteria to be further hashed
@@ -41,11 +55,26 @@ _validateData = (data) ->
   data.camera.vAngle = 0 unless data.camera.vAngle?
 
 #
-# Clone deep
+# Validate structure. Json-schema validation
 #
-# @param {object} obj
+# @param {object} structure
 #
-_cloneDeep = (obj) -> JSON.parse(JSON.stringify(obj))
+_validateStructure = (structure) ->
+  structure = _cloneDeep(structure)
+
+  shelfRes = validator.validate(structure, shelfSchema)
+  couchtableRes = validator.validate(structure, couchtableSchema)
+  tableRes = validator.validate(structure, tableSchema)
+  wardrobeRes = validator.validate(structure, wardrobeSchema)
+
+  if shelfRes.errors.length and couchtableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
+    error = {
+      shelf: shelfRes.errors
+      couchtable: couchtableRes.errors
+      table: tableRes.errors
+      wardrobe: wardrobeRes.errors
+    }
+    throw new Error('structure is invalid for any existing scheme' + JSON.stringify(error, null, 2))
 
 #
 # @param {object} deserialized json object representing a piece of furniture
@@ -54,6 +83,7 @@ hashingFunction = (data) ->
   data = _cloneDeep(data)
   # validate the input
   _validateData(data)
+  _validateStructure(data.structure)
 
   # produce the serialized json to be hashed
   stringToHash = stringifier.stringify(data)

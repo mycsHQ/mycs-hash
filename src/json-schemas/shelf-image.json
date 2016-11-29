@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furnitures/shelf",
+  "id": "http://mycs.com/schemas/furniture/shelf",
   "definitions": {
     "sku": {
       "type": "string",

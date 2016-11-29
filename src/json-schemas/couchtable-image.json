@@ -1,17 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furnitures/table",
+  "id": "http://mycs.com/schemas/furniture/table",
   "definitions": {
     "sku": {
       "type": "string",
       "description": "unique id of a component in our furniture component store"
+    },
+    "label_id": {
+      "type": "string",
+      "description": "element's label id"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
     },
     "element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku" ],
       "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
+        "sku": { "$ref": "#/definitions/sku" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     }
   },
