@@ -9,11 +9,11 @@
     },
     "position": {
       "type": "number",
-      "description": "position by X of the element"
+      "description": "vertical position of the element"
     },
     "h_position": {
       "type": "number",
-      "description": "position by Z of the element"
+      "description": "horizontal position of the element"
     },
     "element": {
       "type": "object",
@@ -32,7 +32,7 @@
         "position": { "$ref": "#/definitions/position" }
       }
     },
-    "vertically_positioned_element": {
+    "horizontally_positioned_element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku", "position", "h_position" ],
@@ -41,12 +41,6 @@
         "position": { "$ref": "#/definitions/position" },
         "h_position": { "$ref": "#/definitions/h_position" }
       }
-    },
-    "legs": {
-      "type": "array",
-      "description": "type for shelf's legs",
-      "minItems": 1,
-      "items": { "$ref": "#/definitions/element" }
     },
     "handle_type": {
       "type": "string",
@@ -75,7 +69,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight" ],
+        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight", "backwalls", "handles", "legPlatforms", "legs" ],
         "dependencies": {
           "legPlatforms": [ "legs" ],
           "legs": [ "legPlatforms" ]
@@ -107,15 +101,23 @@
           "fronts": {
             "type": "array",
             "uniqueItems": true,
-            "items": { "$ref": "#/definitions/vertically_positioned_element" }
+            "items": { "$ref": "#/definitions/horizontally_positioned_element" }
           },
           "handles": {
             "type": "array",
             "uniqueItems": true,
             "items": { "$ref": "#/definitions/handle_element" }
           },
-          "legPlatforms": { "$ref": "#/definitions/legs" },
-          "legs": { "$ref": "#/definitions/legs" }
+          "legPlatforms": {
+            "type": "array",
+            "description": "type for shelf's legs",
+            "items": { "$ref": "#/definitions/element" }
+          },
+          "legs": {
+            "type": "array",
+            "description": "type for shelf's legs",
+            "items": { "$ref": "#/definitions/element" }
+          }
         }
       }
     }

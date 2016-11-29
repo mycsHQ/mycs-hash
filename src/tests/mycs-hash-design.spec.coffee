@@ -3,20 +3,18 @@ uuid = require('node-uuid')
 
 describe('test mycs-hash-design furniture structure hashing lib for the mycs project', ->
 
-  hashDesign = require('./mycs-hash-design')
-
-  shelf = require('./data').shelf
-  table = require('./data').table
-  wardrobe = require('./data').wardrobe
-  couchtable = require('./data').couchtable
+  hashDesign = require('../mycs-hash-design')
+  shelf = require('./structures/shelf')
+  table = require('./structures/table')
+  wardrobe = require('./structures/wardrobe')
+  couchtable = require('./structures/couchtable')
 
   testException = (input, keyWords, done) ->
-
     try
       hashDesign(input)
     catch e
       expect(e.message.indexOf(keyWords) >= 0).toBe(true)
-      return done()
+      done()
 
     throw new Error("should be throw Exception: #{keyWords}")
 
@@ -26,35 +24,35 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
   )
 
   it('should not accept input with other attributes', (done) ->
-    input = _.pick(shelf, ['structure', 'furniture_type', 'camera', 'tags', 'is_label', 'quality'])
+    input = _.pick(shelf, ['structure', 'camera', 'quality'])
     testException(input, 'structure attribute only', done)
   )
 
   it('should produce the same hash for different attribute order', (done) ->
 
-    table1 = {
+    struct1 = {
       structure: [{
         clegs: {
-          back: { sku: 'sku' },
-          front_left: { sku: 'sku' },
-          front_right: { sku: 'sku' },
+          back: { sku: '000.000.000' },
+          front_left: { sku: '000.000.000' },
+          front_right: { sku: '000.000.000' },
         },
-        ctop: { sku: 'sku' }
+        ctop: { sku: '000.000.000' }
       }]
     }
 
-    table2 = {
+    struct2 = {
       structure: [{
         clegs: {
-          front_right: { sku: 'sku' },
-          front_left: { sku: 'sku' },
-          back: { sku: 'sku' },
+          front_right: { sku: '000.000.000' },
+          front_left: { sku: '000.000.000' },
+          back: { sku: '000.000.000' },
         },
-        ctop: { sku: 'sku' }
+        ctop: { sku: '000.000.000' }
       }]
     }
 
-    expect(hashDesign(table1)).toEqual(hashDesign(table2))
+    expect(hashDesign(struct1)).toEqual(hashDesign(struct2))
     done()
 
   )
@@ -68,13 +66,13 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
     # - the hash in the data.json is the one in the prod database the same day
     # There is a discrepancy that should not exist !!!
     # (the hash algorithm probably drifted which is what this lib is meant to prevent)
-    expectedHash = '08ac7846587e0e0537c7e7a3b66e92f88309eedc'
+    expectedHash = '380989a64d2ff9eb7fc7ab03c109d1c14227bffc'
     expect(hashDesign(input)).toEqual(expectedHash)
     done()
 
   )
 
-  it('structure should be valid', (done) ->
+  it('structure should pass json-schema validation', (done) ->
 
     input = _.pick(shelf, ['structure'])
     hashDesign(input)

@@ -4,7 +4,8 @@
   "definitions": {
     "sku": {
       "type": "string",
-      "description": "unique id of a component in our furniture component store"
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
     },
     "element": {
       "type": "object",
@@ -26,6 +27,11 @@
     "drawers": {
       "type": "object",
       "additionalProperties": false,
+      "oneOf": [
+        { "required": [] },
+        { "required": [ "single_drawer" ] },
+        { "required": [ "left_drawer", "right_drawer" ] }
+      ],
       "properties": {
         "single_drawer": { "$ref": "#/definitions/drawer" },
         "left_drawer": { "$ref": "#/definitions/drawer" },
@@ -34,7 +40,7 @@
     }
   },
   "type": "object",
-  "required": [ "tops", "legs" ],
+  "required": [ "tops", "legs", "extensions", "frames", "back_drawers", "front_drawers" ],
   "additionalProperties": false,
   "properties": {
     "tops": {

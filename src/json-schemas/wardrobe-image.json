@@ -15,12 +15,22 @@
       "type": "number",
       "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus"
     },
+    "label_id": {
+      "type": "string",
+      "description": "element's label id"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
+    },
     "element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku" ],
       "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
+        "sku": { "$ref": "#/definitions/sku" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "positioned_element": {
@@ -29,13 +39,14 @@
       "required": [ "sku", "z" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "z": { "$ref": "#/definitions/z" }
+        "z": { "$ref": "#/definitions/z" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "positioned_elements": {
       "type": "array",
       "uniqueItems": true,
-      "minItems": 0,
       "items": { "$ref": "#/definitions/positioned_element" }
     }
   },
@@ -51,13 +62,12 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "cluster", "corpus", "backwall" ],
+        "required": [ "cluster", "corpus", "backwall", "doors", "boards", "drawers", "shoe_drawers", "cloth_rails", "lifts"  ],
         "properties": {
           "cluster": { "$ref": "#/definitions/cluster" },
           "corpus": { "$ref": "#/definitions/element" },
           "doors": {
             "type": "array",
-            "minItems": 0,
             "items": {
               "type": "object",
               "additionalProperties": false,

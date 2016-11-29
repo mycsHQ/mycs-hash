@@ -1,0 +1,190 @@
+{
+  "camera": {
+    "angle": 0
+  },
+  "quality": "hires",
+  "structure": {
+    "columns": [
+      {
+        "position": 0,
+        "wallLeft": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "fronts": [],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "position": 39.1
+          },
+          {
+            "sku": "101.112.00",
+            "position": 192.7
+          },
+          {
+            "position": 231.1,
+            "sku": "101.112.00"
+          },
+          {
+            "sku": "101.112.00",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "position": 77.5
+          }
+        ],
+        "backwalls": [],
+        "handles": [],
+        "legPlatforms": [],
+        "legs": []
+      },
+      {
+        "position": 1,
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "wallLeft": [],
+        "fronts": [],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "position": 192.7
+          },
+          {
+            "position": 231.1,
+            "sku": "101.112.00"
+          },
+          {
+            "sku": "101.112.00",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "position": 39.1
+          }
+        ],
+        "backwalls": [],
+        "handles": [],
+        "legPlatforms": [],
+        "legs": []
+      },
+      {
+        "position": 2,
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "wallLeft": [],
+        "fronts": [],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "position": 192.7
+          },
+          {
+            "position": 231.1,
+            "sku": "101.112.00"
+          },
+          {
+            "sku": "101.112.00",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "position": 39.1
+          }
+        ],
+        "backwalls": [],
+        "handles": [],
+        "legPlatforms": [],
+        "legs": []
+      },
+      {
+        "position": 3,
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "wallLeft": [],
+        "fronts": [],
+        "boards": [
+          {
+            "sku": "101.112.00",
+            "position": 0.7
+          },
+          {
+            "sku": "101.112.00",
+            "position": 115.9
+          },
+          {
+            "sku": "101.112.00",
+            "position": 77.5
+          },
+          {
+            "sku": "101.112.00",
+            "position": 192.7
+          },
+          {
+            "position": 231.1,
+            "sku": "101.112.00"
+          },
+          {
+            "sku": "101.112.00",
+            "position": 154.3
+          },
+          {
+            "sku": "101.112.00",
+            "position": 39.1
+          }
+        ],
+        "backwalls": [],
+        "handles": [],
+        "legPlatforms": [],
+        "legs": []
+      }
+    ]
+  }
+}

@@ -4,14 +4,25 @@
   "definitions": {
     "sku": {
       "type": "string",
-      "description": "unique id of a component in our furniture component store"
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "label_id": {
+      "type": "string",
+      "description": "element's label id"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
     },
     "element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku" ],
       "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
+        "sku": { "$ref": "#/definitions/sku" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "drawer": {
@@ -26,6 +37,11 @@
     "drawers": {
       "type": "object",
       "additionalProperties": false,
+      "oneOf": [
+        { "required": [] },
+        { "required": [ "single_drawer" ] },
+        { "required": [ "left_drawer", "right_drawer" ] }
+      ],
       "properties": {
         "single_drawer": { "$ref": "#/definitions/drawer" },
         "left_drawer": { "$ref": "#/definitions/drawer" },
@@ -34,7 +50,7 @@
     }
   },
   "type": "object",
-  "required": [ "tops", "legs" ],
+  "required": [ "tops", "legs", "extensions", "frames", "back_drawers", "front_drawers" ],
   "additionalProperties": false,
   "properties": {
     "tops": {

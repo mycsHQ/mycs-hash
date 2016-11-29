@@ -56,7 +56,7 @@ gulp.task('js', ->
 #
 gulp.task('minify', ->
   gulp
-    .src('./build/**/*.js')
+    .src('./build/*.js')
     .pipe(uglify(UGLIFY_OPTIONS))
     .pipe(gulp.dest('build/min'))
 )

@@ -9,18 +9,28 @@
     },
     "position": {
       "type": "number",
-      "description": "position by X of the element"
+      "description": "vertical position of the element"
     },
     "h_position": {
       "type": "number",
-      "description": "position by Z of the element"
+      "description": "horizontal position of the element"
+    },
+    "label_id": {
+      "type": "string",
+      "description": "element's label id"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
     },
     "element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku" ],
       "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
+        "sku": { "$ref": "#/definitions/sku" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "positioned_element": {
@@ -29,24 +39,22 @@
       "required": [ "sku", "position" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "position": { "$ref": "#/definitions/position" }
+        "position": { "$ref": "#/definitions/position" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
-    "vertically_positioned_element": {
+    "horizontally_positioned_element": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku", "position", "h_position" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "position": { "$ref": "#/definitions/position" },
-        "h_position": { "$ref": "#/definitions/h_position" }
+        "h_position": { "$ref": "#/definitions/h_position" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
-    },
-    "legs": {
-      "type": "array",
-      "description": "type for shelf's legs",
-      "minItems": 1,
-      "items": { "$ref": "#/definitions/element" }
     },
     "handle_type": {
       "type": "string",
@@ -60,7 +68,9 @@
         "sku": { "$ref": "#/definitions/sku" },
         "position": { "$ref": "#/definitions/position" },
         "h_position": { "$ref": "#/definitions/h_position" },
-        "type": { "$ref": "#/definitions/handle_type" }
+        "type": { "$ref": "#/definitions/handle_type" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     }
   },
@@ -75,7 +85,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight" ],
+        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight", "backwalls", "handles", "legPlatforms", "legs" ],
         "dependencies": {
           "legPlatforms": [ "legs" ],
           "legs": [ "legPlatforms" ]
@@ -107,15 +117,23 @@
           "fronts": {
             "type": "array",
             "uniqueItems": true,
-            "items": { "$ref": "#/definitions/vertically_positioned_element" }
+            "items": { "$ref": "#/definitions/horizontally_positioned_element" }
           },
           "handles": {
             "type": "array",
             "uniqueItems": true,
             "items": { "$ref": "#/definitions/handle_element" }
           },
-          "legPlatforms": { "$ref": "#/definitions/legs" },
-          "legs": { "$ref": "#/definitions/legs" }
+          "legPlatforms": {
+            "type": "array",
+            "description": "type for shelf's legs",
+            "items": { "$ref": "#/definitions/element" }
+          },
+          "legs": {
+            "type": "array",
+            "description": "type for shelf's legs",
+            "items": { "$ref": "#/definitions/element" }
+          }
         }
       }
     }

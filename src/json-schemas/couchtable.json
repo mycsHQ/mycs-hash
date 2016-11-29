@@ -4,7 +4,8 @@
   "definitions": {
     "sku": {
       "type": "string",
-      "description": "unique id of a component in our furniture component store"
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
     },
     "element": {
       "type": "object",
