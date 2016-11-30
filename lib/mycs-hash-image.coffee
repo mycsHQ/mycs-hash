@@ -48,8 +48,11 @@ _validateData = (data) ->
   unless data.hasOwnProperty('quality')
     throw new Error('missing quality attribute')
 
-  unless Object.keys(data).length is 3
-    throw new Error('there must exactly be the attributes camera, structure and quality')
+  unless data.hasOwnProperty('stage')
+    throw new Error('missing stage attribute')
+
+  unless Object.keys(data).length is 4
+    throw new Error('there must exactly be the attributes: camera, structure, stage and quality')
 
   # Attach attr in order to generate the same hash as for the data with 0 attr
   data.camera.vAngle = 0 unless data.camera.vAngle?

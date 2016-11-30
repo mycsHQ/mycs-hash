@@ -1,6 +1,7 @@
 {
   "camera": {"angle": 30},
   "quality": "normal",
+  "stage": "default",
   "structure": [
     {
       "ctop": {

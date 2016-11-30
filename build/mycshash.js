@@ -45,7 +45,7 @@ validators.type = function validateType (instance, schema, options, ctx) {
     return null;
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
-  var types = (schema.type instanceof Array) ? schema.type : [schema.type];
+  var types = Array.isArray(schema.type) ? schema.type : [schema.type];
   if (!types.some(this.testType.bind(this, instance, schema, options, ctx))) {
     var list = types.map(function (v) {
       return v.id && ('<' + v.id + '>') || (v+'');
@@ -77,7 +77,7 @@ validators.anyOf = function validateAnyOf (instance, schema, options, ctx) {
     return null;
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
-  if (!(schema.anyOf instanceof Array)){
+  if (!Array.isArray(schema.anyOf)){
     throw new SchemaError("anyOf must be an array");
   }
   if (!schema.anyOf.some(testSchema.bind(this, instance, options, ctx))) {
@@ -106,7 +106,7 @@ validators.allOf = function validateAllOf (instance, schema, options, ctx) {
   if (instance === undefined) {
     return null;
   }
-  if (!(schema.allOf instanceof Array)){
+  if (!Array.isArray(schema.allOf)){
     throw new SchemaError("allOf must be an array");
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
@@ -139,7 +139,7 @@ validators.oneOf = function validateOneOf (instance, schema, options, ctx) {
   if (instance === undefined) {
     return null;
   }
-  if (!(schema.oneOf instanceof Array)){
+  if (!Array.isArray(schema.oneOf)){
     throw new SchemaError("oneOf must be an array");
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
@@ -312,7 +312,7 @@ validators.maxProperties = function validateMaxProperties (instance, schema, opt
  * @return {String|null|ValidatorResult}
  */
 validators.items = function validateItems (instance, schema, options, ctx) {
-  if (!(instance instanceof Array)) {
+  if (!Array.isArray(instance)) {
     return null;
   }
   var self = this;
@@ -321,7 +321,7 @@ validators.items = function validateItems (instance, schema, options, ctx) {
     return result;
   }
   instance.every(function (value, i) {
-    var items = (schema.items instanceof Array) ? (schema.items[i] || schema.additionalItems) : schema.items;
+    var items = Array.isArray(schema.items) ? (schema.items[i] || schema.additionalItems) : schema.items;
     if (items === undefined) {
       return true;
     }
@@ -484,8 +484,11 @@ validators.required = function validateRequired (instance, schema, options, ctx)
  * @return {String|null}
  */
 validators.pattern = function validatePattern (instance, schema, options, ctx) {
-  if (typeof instance !== 'string') {
+  if (typeof instance !== 'string' && typeof instance !== 'number') {
     return null;
+  }
+  if (typeof instance === 'number') {
+    instance = instance.toString();
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
   if (!instance.match(schema.pattern)) {
@@ -580,7 +583,7 @@ validators.maxLength = function validateMaxLength (instance, schema, options, ct
  * @return {String|null}
  */
 validators.minItems = function validateMinItems (instance, schema, options, ctx) {
-  if (!(instance instanceof Array)) {
+  if (!Array.isArray(instance)) {
     return null;
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
@@ -601,7 +604,7 @@ validators.minItems = function validateMinItems (instance, schema, options, ctx)
  * @return {String|null}
  */
 validators.maxItems = function validateMaxItems (instance, schema, options, ctx) {
-  if (!(instance instanceof Array)) {
+  if (!Array.isArray(instance)) {
     return null;
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
@@ -625,7 +628,7 @@ validators.maxItems = function validateMaxItems (instance, schema, options, ctx)
  */
 validators.uniqueItems = function validateUniqueItems (instance, schema, options, ctx) {
   var result = new ValidatorResult(instance, schema, options, ctx);
-  if (!(instance instanceof Array)) {
+  if (!Array.isArray(instance)) {
     return result;
   }
   function testArrays (v, i, a) {
@@ -667,7 +670,7 @@ function testArrays (v, i, a) {
  * @return {String|null}
  */
 validators.uniqueItems = function validateUniqueItems (instance, schema, options, ctx) {
-  if (!(instance instanceof Array)) {
+  if (!Array.isArray(instance)) {
     return null;
   }
   var result = new ValidatorResult(instance, schema, options, ctx);
@@ -702,7 +705,7 @@ validators.dependencies = function validateDependencies (instance, schema, optio
     if (typeof dep == 'string') {
       dep = [dep];
     }
-    if (dep instanceof Array) {
+    if (Array.isArray(dep)) {
       dep.forEach(function (prop) {
         if (instance[prop] === undefined) {
           result.addError({
@@ -738,7 +741,7 @@ validators.dependencies = function validateDependencies (instance, schema, optio
  * @return {ValidatorResult|null}
  */
 validators['enum'] = function validateEnum (instance, schema, options, ctx) {
-  if (!(schema['enum'] instanceof Array)) {
+  if (!Array.isArray(schema['enum'])) {
     throw new SchemaError("enum expects an array", schema);
   }
   if (instance === undefined) {
@@ -769,7 +772,7 @@ validators.not = validators.disallow = function validateNot (instance, schema, o
   var result = new ValidatorResult(instance, schema, options, ctx);
   var notTypes = schema.not || schema.disallow;
   if(!notTypes) return null;
-  if(!(notTypes instanceof Array)) notTypes=[notTypes];
+  if(!Array.isArray(notTypes)) notTypes=[notTypes];
   notTypes.forEach(function (type) {
     if (self.testType(instance, schema, options, ctx, type)) {
       var schemaId = type && type.id && ('<' + type.id + '>') || type;
@@ -847,15 +850,15 @@ ValidatorResult.prototype.importErrors = function importErrors(res) {
   if (typeof res == 'string' || (res && res.validatorType)) {
     this.addError(res);
   } else if (res && res.errors) {
-    var errs = this.errors;
-    res.errors.forEach(function (v) {
-      errs.push(v);
-    });
+    Array.prototype.push.apply(this.errors, res.errors);
   }
 };
 
+function stringizer (v,i){
+  return i+': '+v.toString()+'\n';
+}
 ValidatorResult.prototype.toString = function toString(res) {
-  return this.errors.map(function(v,i){ return i+': '+v.toString()+'\n'; }).join('');
+  return this.errors.map(stringizer).join('');
 };
 
 Object.defineProperty(ValidatorResult.prototype, "valid", { get: function() {
@@ -998,44 +1001,52 @@ exports.deepCompareStrict = function deepCompareStrict (a, b) {
   return a === b;
 };
 
-module.exports.deepMerge = function deepMerge (target, src) {
+function deepMerger (target, dst, e, i) {
+  if (typeof e === 'object') {
+    dst[i] = deepMerge(target[i], e)
+  } else {
+    if (target.indexOf(e) === -1) {
+      dst.push(e)
+    }
+  }
+}
+
+function copyist (src, dst, key) {
+  dst[key] = src[key];
+}
+
+function copyistWithDeepMerge (target, src, dst, key) {
+  if (typeof src[key] !== 'object' || !src[key]) {
+    dst[key] = src[key];
+  }
+  else {
+    if (!target[key]) {
+      dst[key] = src[key];
+    } else {
+      dst[key] = deepMerge(target[key], src[key])
+    }
+  }
+}
+
+function deepMerge (target, src) {
   var array = Array.isArray(src);
   var dst = array && [] || {};
 
   if (array) {
     target = target || [];
     dst = dst.concat(target);
-    src.forEach(function (e, i) {
-      if (typeof e === 'object') {
-        dst[i] = deepMerge(target[i], e)
-      } else {
-        if (target.indexOf(e) === -1) {
-          dst.push(e)
-        }
-      }
-    });
+    src.forEach(deepMerger.bind(null, target, dst));
   } else {
     if (target && typeof target === 'object') {
-      Object.keys(target).forEach(function (key) {
-        dst[key] = target[key];
-      });
+      Object.keys(target).forEach(copyist.bind(null, target, dst));
     }
-    Object.keys(src).forEach(function (key) {
-      if (typeof src[key] !== 'object' || !src[key]) {
-        dst[key] = src[key];
-      }
-      else {
-        if (!target[key]) {
-          dst[key] = src[key];
-        } else {
-          dst[key] = deepMerge(target[key], src[key])
-        }
-      }
-    });
+    Object.keys(src).forEach(copyistWithDeepMerge.bind(null, target, src, dst));
   }
 
   return dst;
 };
+
+module.exports.deepMerge = deepMerge;
 
 /**
  * Validates instance against the provided schema
@@ -1055,6 +1066,9 @@ exports.objectGetPath = function objectGetPath(o, s) {
   return o;
 };
 
+function pathEncoder (v) {
+  return '/'+encodeURIComponent(v).replace(/~/g,'%7E');
+}
 /**
  * Accept an Array of property names and return a JSON Pointer URI fragment
  * @param Array a
@@ -1063,7 +1077,7 @@ exports.objectGetPath = function objectGetPath(o, s) {
 exports.encodePath = function encodePointer(a){
 	// ~ must be encoded explicitly because hacks
 	// the slash is encoded by encodeURIComponent
-	return a.map(function(v){ return '/'+encodeURIComponent(v).replace(/~/g,'%7E'); }).join('');
+	return a.map(pathEncoder).join('');
 };
 
 },{"url":10}],3:[function(require,module,exports){
@@ -1240,6 +1254,16 @@ Validator.prototype.validate = function validate (instance, schema, options, ctx
 };
 
 /**
+* @param Object schema
+* @return mixed schema uri or false
+*/
+function shouldResolve(schema) {
+  var ref = (typeof schema === 'string') ? schema : schema.$ref;
+  if (typeof ref=='string') return ref;
+  return false;
+}
+
+/**
  * Validates an instance against the schema (the actual work horse)
  * @param instance
  * @param schema
@@ -1249,41 +1273,21 @@ Validator.prototype.validate = function validate (instance, schema, options, ctx
  * @return {ValidatorResult}
  */
 Validator.prototype.validateSchema = function validateSchema (instance, schema, options, ctx) {
-  var self = this;
   var result = new ValidatorResult(instance, schema, options, ctx);
   if (!schema) {
     throw new Error("schema is undefined");
   }
 
-  /**
-  * @param Object schema
-  * @return mixed schema uri or false
-  */
-  function shouldResolve(schema) {
-    var ref = (typeof schema === 'string') ? schema : schema.$ref;
-    if (typeof ref=='string') return ref;
-    return false;
-  }
-  /**
-  * @param Object schema
-  * @param SchemaContext ctx
-  * @returns Object schema or resolved schema
-  */
-  function resolve(schema, ctx) {
-    var ref;
-    if(ref = shouldResolve(schema)) {
-      return self.resolve(schema, ref, ctx).subschema;
-    }
-    return schema;
-  }
-
   if (schema['extends']) {
     if (schema['extends'] instanceof Array) {
-      schema['extends'].forEach(function (s) {
-        schema = helpers.deepMerge(schema, resolve(s, ctx));
-      });
+      var schemaobj = {schema: schema, ctx: ctx};
+      schema['extends'].forEach(this.schemaTraverser.bind(this, schemaobj));
+      schema = schemaobj.schema;
+      schemaobj.schema = null;
+      schemaobj.ctx = null;
+      schemaobj = null;
     } else {
-      schema = helpers.deepMerge(schema, resolve(schema['extends'], ctx));
+      schema = helpers.deepMerge(schema, this.superResolve(schema['extends'], ctx));
     }
   }
 
@@ -1299,9 +1303,9 @@ Validator.prototype.validateSchema = function validateSchema (instance, schema, 
   for (var key in schema) {
     if (!attribute.ignoreProperties[key] && skipAttributes.indexOf(key) < 0) {
       var validatorErr = null;
-      var validator = self.attributes[key];
+      var validator = this.attributes[key];
       if (validator) {
-        validatorErr = validator.call(self, instance, schema, options, ctx);
+        validatorErr = validator.call(this, instance, schema, options, ctx);
       } else if (options.allowUnknownAttributes === false) {
         // This represents an error with the schema itself, not an invalid instance
         throw new SchemaError("Unsupported attribute: " + key, schema);
@@ -1318,6 +1322,30 @@ Validator.prototype.validateSchema = function validateSchema (instance, schema, 
   }
   return result;
 };
+
+/**
+* @private
+* @param Object schema
+* @param SchemaContext ctx
+* @returns Object schema or resolved schema
+*/
+Validator.prototype.schemaTraverser = function schemaTraverser (schemaobj, s) {
+  schemaobj.schema = helpers.deepMerge(schemaobj.schema, this.superResolve(s, schemaobj.ctx));
+}
+
+/**
+* @private
+* @param Object schema
+* @param SchemaContext ctx
+* @returns Object schema or resolved schema
+*/
+Validator.prototype.superResolve = function superResolve (schema, ctx) {
+  var ref;
+  if(ref = shouldResolve(schema)) {
+    return this.resolve(schema, ref, ctx).subschema;
+  }
+  return schema;
+}
 
 /**
 * @private
@@ -2877,7 +2905,7 @@ function isNullOrUndefined(arg) {
 },{"punycode":6,"querystring":9}],11:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/table",
+  "id": "http://mycs.com/schemas/furniture/couchtable",
   "definitions": {
     "sku": {
       "type": "string",
@@ -2927,7 +2955,7 @@ module.exports={
 },{}],12:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/table",
+  "id": "http://mycs.com/schemas/furniture/couchtable",
   "definitions": {
     "sku": {
       "type": "string",
@@ -2976,11 +3004,13 @@ module.exports={
     },
     "position": {
       "type": "number",
-      "description": "vertical position of the element"
+      "description": "vertical position of the element",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "h_position": {
       "type": "number",
-      "description": "horizontal position of the element"
+      "description": "horizontal position of the element",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "label_id": {
       "type": "string",
@@ -3118,11 +3148,13 @@ module.exports={
     },
     "position": {
       "type": "number",
-      "description": "vertical position of the element"
+      "description": "vertical position of the element",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "h_position": {
       "type": "number",
-      "description": "horizontal position of the element"
+      "description": "horizontal position of the element",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "element": {
       "type": "object",
@@ -3429,7 +3461,7 @@ module.exports={
 },{}],17:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/wardrobes",
+  "id": "http://mycs.com/schemas/furniture/wardrobe",
   "definitions": {
     "sku": {
       "type": "string",
@@ -3442,7 +3474,8 @@ module.exports={
     },
     "z": {
       "type": "number",
-      "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus"
+      "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "label_id": {
       "type": "string",
@@ -3525,7 +3558,7 @@ module.exports={
 },{}],18:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/wardrobes",
+  "id": "http://mycs.com/schemas/furniture/wardrobe",
   "definitions": {
     "sku": {
       "type": "string",
@@ -3538,7 +3571,8 @@ module.exports={
     },
     "z": {
       "type": "number",
-      "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus"
+      "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
+      "pattern": "^\\d{1,3}(\\.\\d)*$"
     },
     "element": {
       "type": "object",
@@ -3719,8 +3753,11 @@ _validateData = function(data) {
   if (!data.hasOwnProperty('quality')) {
     throw new Error('missing quality attribute');
   }
-  if (Object.keys(data).length !== 3) {
-    throw new Error('there must exactly be the attributes camera, structure and quality');
+  if (!data.hasOwnProperty('stage')) {
+    throw new Error('missing stage attribute');
+  }
+  if (Object.keys(data).length !== 4) {
+    throw new Error('there must exactly be the attributes: camera, structure, stage and quality');
   }
   if (data.camera.vAngle == null) {
     return data.camera.vAngle = 0;

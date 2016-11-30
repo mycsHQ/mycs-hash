@@ -5,9 +5,6 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
 
   hashDesign = require('../mycs-hash-design')
   shelf = require('./structures/shelf')
-  table = require('./structures/table')
-  wardrobe = require('./structures/wardrobe')
-  couchtable = require('./structures/couchtable')
 
   testException = (input, keyWords, done) ->
     try
@@ -57,8 +54,15 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
 
   )
 
-  it('should produce the expected hash', (done) ->
+  it('should not accept input with invalid structure', (done) ->
+    input = _.cloneDeep(_.pick(shelf, ['structure']))
+    input.structure['field'] = {}
+    testException(input, 'structure is invalid', done)
 
+    done()
+  )
+
+  it('should produce the expected hash', (done) ->
     input = _.pick(shelf, ['structure'])
 
     # @todo clarify
@@ -70,33 +74,6 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
     expect(hashDesign(input)).toEqual(expectedHash)
     done()
 
-  )
-
-  it('structure should pass json-schema validation', (done) ->
-
-    input = _.pick(shelf, ['structure'])
-    hashDesign(input)
-
-    input = _.pick(table, ['structure'])
-    hashDesign(input)
-
-    input = _.pick(couchtable, ['structure'])
-    hashDesign(input)
-
-    input = _.pick(wardrobe, ['structure'])
-    hashDesign(input)
-
-    done()
-  )
-
-  it('should not accept input with invalid structure', (done) ->
-    input = _.pick(shelf, ['structure'])
-
-    copyInput = _.cloneDeep(input)
-    copyInput.structure['field'] = {}
-    testException(copyInput, 'structure is invalid', done)
-
-    done()
   )
 
 )

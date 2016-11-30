@@ -3,6 +3,7 @@
     "angle": 30
   },
   "quality": "normal",
+  "stage": "default",
   "structure": {
     "tops": {
       "tabletop": {
