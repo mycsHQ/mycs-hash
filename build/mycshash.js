@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
 var helpers = require('./helpers');
@@ -3711,7 +3711,7 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable.json":12,"./json-schemas/shelf.json":14,"./json-schemas/table.json":16,"./json-schemas/wardrobe.json":18,"./stringify":22,"jsonschema":3,"jssha":5}],20:[function(require,module,exports){
+},{"./json-schemas/couchtable.json":12,"./json-schemas/shelf.json":14,"./json-schemas/table.json":16,"./json-schemas/wardrobe.json":18,"./stringify":21,"jsonschema":3,"jssha":5}],20:[function(require,module,exports){
 var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateData, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
 
 jsSHA = require('jssha');
@@ -3797,14 +3797,7 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable-image.json":11,"./json-schemas/shelf-image.json":13,"./json-schemas/table-image.json":15,"./json-schemas/wardrobe-image.json":17,"./stringify":22,"jsonschema":3,"jssha":5}],21:[function(require,module,exports){
-module.exports = {
-  hashImage: require('./mycs-hash-image'),
-  hashDesign: require('./mycs-hash-design')
-};
-
-
-},{"./mycs-hash-design":19,"./mycs-hash-image":20}],22:[function(require,module,exports){
+},{"./json-schemas/couchtable-image.json":11,"./json-schemas/shelf-image.json":13,"./json-schemas/table-image.json":15,"./json-schemas/wardrobe-image.json":17,"./stringify":21,"jsonschema":3,"jssha":5}],21:[function(require,module,exports){
 var StableJSONStringify,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -3897,4 +3890,11 @@ StableJSONStringify = (function() {
 module.exports = new StableJSONStringify;
 
 
-},{}]},{},[21]);
+},{}],"mycshash":[function(require,module,exports){
+module.exports = {
+  hashImage: require('./mycs-hash-image'),
+  hashDesign: require('./mycs-hash-design')
+};
+
+
+},{"./mycs-hash-design":19,"./mycs-hash-image":20}]},{},[]);

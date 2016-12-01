@@ -42,12 +42,11 @@ gulp.task('coffeelint', ->
 gulp.task('js', ->
   browserify(
     {
-      entries: './src/mycshash.coffee'
       extensions: [ '.coffee' ]
       transform: [ 'coffeeify' ]
-      expose: 'mycshash'
     }
   )
+  .require('./src/mycshash.coffee', { expose: 'mycshash' })
   .bundle().pipe(source('mycshash.js')).pipe(gulp.dest('./build'))
 )
 
@@ -89,6 +88,7 @@ gulp.task('test', ->
 #
 gulp.task('copy', ->
   gulp.src('src/**/!(*.spec)*.coffee', {}).pipe(gulp.dest('lib/'))
+  gulp.src('src/json-schemas/*.json', {}).pipe(gulp.dest('lib/json-schemas/'))
 )
 
 #
