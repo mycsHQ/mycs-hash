@@ -3303,17 +3303,27 @@ module.exports={
     },
     "drawers": {
       "type": "object",
-      "additionalProperties": false,
       "oneOf": [
-        { "required": [] },
-        { "required": [ "single_drawer" ] },
-        { "required": [ "left_drawer", "right_drawer" ] }
-      ],
-      "properties": {
-        "single_drawer": { "$ref": "#/definitions/drawer" },
-        "left_drawer": { "$ref": "#/definitions/drawer" },
-        "right_drawer": { "$ref": "#/definitions/drawer" }
-      }
+        {
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "single_drawer" ],
+          "properties": {
+            "single_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "left_drawer", "right_drawer" ],
+          "properties": {
+            "left_drawer": { "$ref": "#/definitions/drawer" },
+            "right_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        }
+      ]
     }
   },
   "type": "object",
@@ -3330,19 +3340,26 @@ module.exports={
     },
     "legs": {
       "type": "object",
-      "additionalProperties": false,
       "oneOf": [
-        { "required": [ "left", "right" ] },
-        { "required": [ "back_left", "back_right", "front_left", "front_right" ] }
-      ],
-      "properties": {
-        "back_left": { "$ref": "#/definitions/element" },
-        "back_right": { "$ref": "#/definitions/element" },
-        "front_left": { "$ref": "#/definitions/element" },
-        "front_right": { "$ref": "#/definitions/element" },
-        "left": { "$ref": "#/definitions/element" },
-        "right": { "$ref": "#/definitions/element" }
-      }
+        {
+          "additionalProperties": false,
+          "required": [ "left", "right" ],
+          "properties": {
+            "left": { "$ref": "#/definitions/element" },
+            "right": { "$ref": "#/definitions/element" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "back_left", "back_right", "front_left", "front_right" ],
+          "properties": {
+            "back_left": { "$ref": "#/definitions/element" },
+            "back_right": { "$ref": "#/definitions/element" },
+            "front_left": { "$ref": "#/definitions/element" },
+            "front_right": { "$ref": "#/definitions/element" }
+          }
+        }
+      ]
     },
     "extensions": {
       "type": "object",
@@ -3395,17 +3412,27 @@ module.exports={
     },
     "drawers": {
       "type": "object",
-      "additionalProperties": false,
       "oneOf": [
-        { "required": [] },
-        { "required": [ "single_drawer" ] },
-        { "required": [ "left_drawer", "right_drawer" ] }
-      ],
-      "properties": {
-        "single_drawer": { "$ref": "#/definitions/drawer" },
-        "left_drawer": { "$ref": "#/definitions/drawer" },
-        "right_drawer": { "$ref": "#/definitions/drawer" }
-      }
+        {
+          "additionalProperties": false,
+          "properties": {}
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "single_drawer" ],
+          "properties": {
+            "single_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "left_drawer", "right_drawer" ],
+          "properties": {
+            "left_drawer": { "$ref": "#/definitions/drawer" },
+            "right_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        }
+      ]
     }
   },
   "type": "object",
@@ -3422,19 +3449,26 @@ module.exports={
     },
     "legs": {
       "type": "object",
-      "additionalProperties": false,
       "oneOf": [
-        { "required": [ "left", "right" ] },
-        { "required": [ "back_left", "back_right", "front_left", "front_right" ] }
-      ],
-      "properties": {
-        "back_left": { "$ref": "#/definitions/element" },
-        "back_right": { "$ref": "#/definitions/element" },
-        "front_left": { "$ref": "#/definitions/element" },
-        "front_right": { "$ref": "#/definitions/element" },
-        "left": { "$ref": "#/definitions/element" },
-        "right": { "$ref": "#/definitions/element" }
-      }
+        {
+          "additionalProperties": false,
+          "required": [ "left", "right" ],
+          "properties": {
+            "left": { "$ref": "#/definitions/element" },
+            "right": { "$ref": "#/definitions/element" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "back_left", "back_right", "front_left", "front_right" ],
+          "properties": {
+            "back_left": { "$ref": "#/definitions/element" },
+            "back_right": { "$ref": "#/definitions/element" },
+            "front_left": { "$ref": "#/definitions/element" },
+            "front_right": { "$ref": "#/definitions/element" }
+          }
+        }
+      ]
     },
     "extensions": {
       "type": "object",
@@ -3687,12 +3721,15 @@ _validateStructure = function(structure) {
   wardrobeRes = validator.validate(structure, wardrobeSchema);
   if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
     error = {
-      shelf: shelfRes.errors,
-      couchtable: couchtableRes.errors,
-      table: tableRes.errors,
-      wardrobe: wardrobeRes.errors
+      structure: structure,
+      schemas: {
+        shelf: shelfRes.errors,
+        couchtable: couchtableRes.errors,
+        table: tableRes.errors,
+        wardrobe: wardrobeRes.errors
+      }
     };
-    throw new Error('structure is invalid for any existing scheme' + JSON.stringify(error, null, 2));
+    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2));
   }
 };
 
@@ -3773,12 +3810,15 @@ _validateStructure = function(structure) {
   wardrobeRes = validator.validate(structure, wardrobeSchema);
   if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
     error = {
-      shelf: shelfRes.errors,
-      couchtable: couchtableRes.errors,
-      table: tableRes.errors,
-      wardrobe: wardrobeRes.errors
+      structure: structure,
+      schemas: {
+        shelf: shelfRes.errors,
+        couchtable: couchtableRes.errors,
+        table: tableRes.errors,
+        wardrobe: wardrobeRes.errors
+      }
     };
-    throw new Error('structure is invalid for any existing scheme' + JSON.stringify(error, null, 2));
+    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2));
   }
 };
 

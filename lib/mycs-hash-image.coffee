@@ -72,12 +72,15 @@ _validateStructure = (structure) ->
 
   if shelfRes.errors.length and couchtableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
     error = {
-      shelf: shelfRes.errors
-      couchtable: couchtableRes.errors
-      table: tableRes.errors
-      wardrobe: wardrobeRes.errors
+      structure: structure
+      schemas: {
+        shelf: shelfRes.errors
+        couchtable: couchtableRes.errors
+        table: tableRes.errors
+        wardrobe: wardrobeRes.errors
+      }
     }
-    throw new Error('structure is invalid for any existing scheme' + JSON.stringify(error, null, 2))
+    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2))
 
 #
 # @param {object} deserialized json object representing a piece of furniture
