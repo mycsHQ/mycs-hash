@@ -3519,6 +3519,10 @@ module.exports={
       "type": "boolean",
       "description": "determines whether element must be rendered or not"
     },
+    "withoutBox": {
+      "type": "boolean",
+      "description": "determines whether drawers must be rendered with box or not"
+    },
     "element": {
       "type": "object",
       "additionalProperties": false,
@@ -3540,10 +3544,27 @@ module.exports={
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
+    "drawer_element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "sku", "z" ],
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" },
+        "z": { "$ref": "#/definitions/z" },
+        "label_id": { "$ref": "#/definitions/label_id" },
+        "invisible": { "$ref": "#/definitions/invisible" },
+        "withoutBox": { "$ref": "#/definitions/withoutBox" }
+      }
+    },
     "positioned_elements": {
       "type": "array",
       "uniqueItems": true,
       "items": { "$ref": "#/definitions/positioned_element" }
+    },
+    "drawer_elements": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/drawer_element" }
     }
   },
   "type": "object",
@@ -3579,7 +3600,7 @@ module.exports={
             }
           },
           "boards": { "$ref": "#/definitions/positioned_elements" },
-          "drawers": { "$ref": "#/definitions/positioned_elements" },
+          "drawers": { "$ref": "#/definitions/drawer_elements" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
           "lifts": { "$ref": "#/definitions/positioned_elements" },
