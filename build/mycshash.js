@@ -3509,7 +3509,7 @@ module.exports={
     "z": {
       "type": "number",
       "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "label_id": {
       "type": "string",
@@ -3627,7 +3627,7 @@ module.exports={
     "z": {
       "type": "number",
       "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "element": {
       "type": "object",
