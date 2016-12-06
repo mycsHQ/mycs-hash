@@ -3005,12 +3005,12 @@ module.exports={
     "position": {
       "type": "number",
       "description": "vertical position of the element",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "h_position": {
       "type": "number",
       "description": "horizontal position of the element",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "label_id": {
       "type": "string",
@@ -3149,12 +3149,12 @@ module.exports={
     "position": {
       "type": "number",
       "description": "vertical position of the element",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "h_position": {
       "type": "number",
       "description": "horizontal position of the element",
-      "pattern": "^\\d{1,3}(\\.\\d)*$"
+      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
     "element": {
       "type": "object",
