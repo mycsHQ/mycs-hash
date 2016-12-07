@@ -39,6 +39,8 @@ _validateData = (data) ->
   unless data.hasOwnProperty('structure')
     throw new Error('missing structure attribute')
 
+  _validateStructure(data.structure)
+
   unless Object.keys(data).length is 1
     throw new Error('there must be structure attribute only')
 
@@ -76,7 +78,6 @@ hashingFunction = (data) ->
   data = _cloneDeep(data)
   # validate the input
   _validateData(data)
-  _validateStructure(data.structure)
 
   # produce the serialized json to be hashed
   stringToHash = stringifier.stringify(data)

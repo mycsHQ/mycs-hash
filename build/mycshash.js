@@ -3728,6 +3728,7 @@ _validateData = function(data) {
   if (!data.hasOwnProperty('structure')) {
     throw new Error('missing structure attribute');
   }
+  _validateStructure(data.structure);
   if (Object.keys(data).length !== 1) {
     throw new Error('there must be structure attribute only');
   }
@@ -3758,7 +3759,6 @@ hashingFunction = function(data) {
   var shaObj, stringToHash;
   data = _cloneDeep(data);
   _validateData(data);
-  _validateStructure(data.structure);
   stringToHash = stringifier.stringify(data);
   shaObj = new jsSHA(HASH_ALGORITHM, "TEXT");
   shaObj.setHMACKey(HMAC_KEY, "TEXT");
@@ -3798,30 +3798,6 @@ _cloneDeep = function(obj) {
   return JSON.parse(JSON.stringify(obj));
 };
 
-_validateData = function(data) {
-  if (!data.hasOwnProperty('camera')) {
-    throw new Error('missing camera attribute');
-  }
-  if (!data.camera.hasOwnProperty('angle')) {
-    throw new Error('missing angle attribute in camera');
-  }
-  if (!data.hasOwnProperty('structure')) {
-    throw new Error('missing structure attribute');
-  }
-  if (!data.hasOwnProperty('quality')) {
-    throw new Error('missing quality attribute');
-  }
-  if (!data.hasOwnProperty('stage')) {
-    throw new Error('missing stage attribute');
-  }
-  if (Object.keys(data).length !== 4) {
-    throw new Error('there must exactly be the attributes: camera, structure, stage and quality');
-  }
-  if (data.camera.vAngle == null) {
-    return data.camera.vAngle = 0;
-  }
-};
-
 _validateStructure = function(structure) {
   var couchtableRes, error, shelfRes, tableRes, wardrobeRes;
   structure = _cloneDeep(structure);
@@ -3843,11 +3819,49 @@ _validateStructure = function(structure) {
   }
 };
 
+_validateData = function(data) {
+  if (!data.hasOwnProperty('camera')) {
+    throw new Error('missing camera attribute');
+  }
+  if (!data.camera.hasOwnProperty('angle')) {
+    throw new Error('missing angle attribute in camera');
+  }
+  if (!(typeof data.camera.angle === 'number' && isFinite(data.camera.angle))) {
+    throw new Error('invalid camera angle');
+  }
+  if (data.camera.hasOwnProperty('vAngle')) {
+    if (!(typeof data.camera.vAngle === 'number' && isFinite(data.camera.vAngle))) {
+      throw new Error('invalid camera vAngle');
+    }
+  }
+  if (!data.hasOwnProperty('quality')) {
+    throw new Error('missing quality attribute');
+  }
+  if (!(typeof data.quality === 'string' && data.quality)) {
+    throw new Error('invalid quality attribute');
+  }
+  if (!data.hasOwnProperty('stage')) {
+    throw new Error('missing stage attribute');
+  }
+  if (!(typeof data.stage === 'string' && data.stage)) {
+    throw new Error('invalid stage attribute');
+  }
+  if (!data.hasOwnProperty('structure')) {
+    throw new Error('missing structure attribute');
+  }
+  _validateStructure(data.structure);
+  if (Object.keys(data).length !== 4) {
+    throw new Error('there must exactly be the attributes: camera, structure, stage and quality');
+  }
+};
+
 hashingFunction = function(data) {
   var shaObj, stringToHash;
   data = _cloneDeep(data);
   _validateData(data);
-  _validateStructure(data.structure);
+  if (data.camera.vAngle == null) {
+    data.camera.vAngle = 0;
+  }
   stringToHash = stringifier.stringify(data);
   shaObj = new jsSHA(HASH_ALGORITHM, "TEXT");
   shaObj.setHMACKey(HMAC_KEY, "TEXT");
