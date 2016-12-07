@@ -13,6 +13,8 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
       expect(e.message.indexOf(keyWords) >= 0).toBe(true)
       done()
 
+      return
+
     throw new Error("should throw an Exception: #{keyWords}")
 
   it('should not accept input without structure', (done) ->
@@ -26,13 +28,31 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
   )
 
   it('should not accept input without camera angle', (done) ->
-    input = _.pick(shelf, ['structure', 'quality', 'camera', 'stage'])
+    input = _.cloneDeep(shelf)
     input.camera = {}
     testException(input, 'angle', done)
   )
 
+  it('should not accept NaN in angle', (done) ->
+    input = _.cloneDeep(shelf)
+    input.camera.angle = NaN
+    testException(input, 'angle', done)
+  )
+
+  it('should not accept NaN in vAngle', (done) ->
+    input = _.cloneDeep(shelf)
+    input.camera.vAngle = NaN
+    testException(input, 'vAngle', done)
+  )
+
   it('should not accept input without quality', (done) ->
     input = _.pick(shelf, ['structure', 'camera'])
+    testException(input, 'quality', done)
+  )
+
+  it('should not accept input with empty quality attribute', (done) ->
+    input = _.cloneDeep(shelf)
+    input.quality = ''
     testException(input, 'quality', done)
   )
 
@@ -41,8 +61,14 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
     testException(input, 'stage', done)
   )
 
+  it('should not accept input with empty stage attribute', (done) ->
+    input = _.cloneDeep(shelf)
+    input.stage = ''
+    testException(input, 'stage', done)
+  )
+
   it('should not accept input with other attributes', (done) ->
-    input = _.pick(shelf, ['structure', 'camera', 'quality', 'stage'])
+    input = _.cloneDeep(shelf)
     input.otherAttr = "woohoo"
     testException(input, 'camera, structure, stage and quality', done)
   )
