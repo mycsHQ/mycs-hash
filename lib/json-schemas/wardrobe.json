@@ -36,6 +36,7 @@
     "positioned_elements": {
       "type": "array",
       "uniqueItems": true,
+      "minItems": 1,
       "items": { "$ref": "#/definitions/positioned_element" }
     }
   },
@@ -51,10 +52,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "cluster", "corpus", "backwall", "doors", "boards", "drawers", "shoe_drawers", "cloth_rails", "lifts"  ],
+        "required": [ "cluster", "corpus", "backwall", "doors"  ],
         "properties": {
           "cluster": { "$ref": "#/definitions/cluster" },
           "corpus": { "$ref": "#/definitions/element" },
+          "backwall": { "$ref": "#/definitions/element" },
           "doors": {
             "type": "array",
             "items": {
@@ -75,8 +77,7 @@
           "drawers": { "$ref": "#/definitions/positioned_elements" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
-          "lifts": { "$ref": "#/definitions/positioned_elements" },
-          "backwall": { "$ref": "#/definitions/element" }
+          "lifts": { "$ref": "#/definitions/positioned_elements" }
         }
       }
     }

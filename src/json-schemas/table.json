@@ -29,10 +29,6 @@
       "oneOf": [
         {
           "additionalProperties": false,
-          "properties": {}
-        },
-        {
-          "additionalProperties": false,
           "required": [ "single_drawer" ],
           "properties": {
             "single_drawer": { "$ref": "#/definitions/drawer" }
@@ -50,7 +46,7 @@
     }
   },
   "type": "object",
-  "required": [ "tops", "legs", "extensions", "frames", "back_drawers", "front_drawers" ],
+  "required": [ "tops", "legs" ],
   "additionalProperties": false,
   "properties": {
     "tops": {
@@ -87,6 +83,7 @@
     "extensions": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" }
@@ -95,6 +92,7 @@
     "frames": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" },

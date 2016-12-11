@@ -43,7 +43,6 @@
             ]
           }
         ],
-        "cloth_rails": [],
         "backwall": {
           "sku": "000.002.08"
         },
@@ -53,8 +52,6 @@
             "z": 147
           }
         ],
-        "shoe_drawers": [],
-        "lifts": [],
         "cluster": 0
       },
       {
@@ -86,7 +83,6 @@
             ]
           }
         ],
-        "cloth_rails": [],
         "backwall": {
           "sku": "000.002.08"
         },
@@ -118,7 +114,6 @@
             "z": 213.5
           }
         ],
-        "shoe_drawers": [],
         "cluster": 0
       },
       {
@@ -162,7 +157,6 @@
             ]
           }
         ],
-        "cloth_rails": [],
         "backwall": {
           "sku": "000.002.08"
         },
@@ -180,8 +174,6 @@
             "z": 79.8
           }
         ],
-        "shoe_drawers": [],
-        "lifts": [],
         "cluster": 0
       },
       {
@@ -223,12 +215,9 @@
             "z": 148.4
           }
         ],
-        "drawers": [],
         "backwall": {
           "sku": "000.002.02"
         },
-        "shoe_drawers": [],
-        "lifts": [],
         "cluster": 1
       },
       {
@@ -272,13 +261,9 @@
             ]
           }
         ],
-        "cloth_rails": [],
-        "drawers": [],
         "backwall": {
           "sku": "000.002.08"
         },
-        "shoe_drawers": [],
-        "lifts": [],
         "cluster": 1
       }
     ]

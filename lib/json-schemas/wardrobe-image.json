@@ -49,7 +49,13 @@
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
-    "drawer_element": {
+    "positioned_elements": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/positioned_element" }
+    },
+    "drawer": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku", "z" ],
@@ -61,15 +67,11 @@
         "withoutBox": { "$ref": "#/definitions/withoutBox" }
       }
     },
-    "positioned_elements": {
+    "drawers": {
       "type": "array",
       "uniqueItems": true,
-      "items": { "$ref": "#/definitions/positioned_element" }
-    },
-    "drawer_elements": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "$ref": "#/definitions/drawer_element" }
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/drawer" }
     }
   },
   "type": "object",
@@ -84,10 +86,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "cluster", "corpus", "backwall", "doors", "boards", "drawers", "shoe_drawers", "cloth_rails", "lifts"  ],
+        "required": [ "cluster", "corpus", "backwall", "doors"  ],
         "properties": {
           "cluster": { "$ref": "#/definitions/cluster" },
           "corpus": { "$ref": "#/definitions/element" },
+          "backwall": { "$ref": "#/definitions/element" },
           "doors": {
             "type": "array",
             "items": {
@@ -105,11 +108,10 @@
             }
           },
           "boards": { "$ref": "#/definitions/positioned_elements" },
-          "drawers": { "$ref": "#/definitions/drawer_elements" },
+          "drawers": { "$ref": "#/definitions/drawers" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
-          "lifts": { "$ref": "#/definitions/positioned_elements" },
-          "backwall": { "$ref": "#/definitions/element" }
+          "lifts": { "$ref": "#/definitions/positioned_elements" }
         }
       }
     }

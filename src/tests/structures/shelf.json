@@ -48,11 +48,7 @@
             "sku": "101.112.00",
             "position": 77.5
           }
-        ],
-        "backwalls": [],
-        "handles": [],
-        "legPlatforms": [],
-        "legs": []
+        ]
       },
       {
         "position": 1,
@@ -92,11 +88,7 @@
             "sku": "101.112.00",
             "position": 39.1
           }
-        ],
-        "backwalls": [],
-        "handles": [],
-        "legPlatforms": [],
-        "legs": []
+        ]
       },
       {
         "position": 2,
@@ -136,11 +128,7 @@
             "sku": "101.112.00",
             "position": 39.1
           }
-        ],
-        "backwalls": [],
-        "handles": [],
-        "legPlatforms": [],
-        "legs": []
+        ]
       },
       {
         "position": 3,
@@ -180,11 +168,7 @@
             "sku": "101.112.00",
             "position": 39.1
           }
-        ],
-        "backwalls": [],
-        "handles": [],
-        "legPlatforms": [],
-        "legs": []
+        ]
       }
     ]
   }

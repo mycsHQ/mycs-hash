@@ -3100,27 +3100,26 @@ module.exports={
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight", "backwalls", "handles", "legPlatforms", "legs" ],
-        "dependencies": {
-          "legPlatforms": [ "legs" ],
-          "legs": [ "legPlatforms" ]
-        },
+        "required": [ "position", "wallLeft", "wallRight", "boards", "fronts" ],
         "properties": {
           "position": { "$ref": "#/definitions/position" },
           "wallLeft": {
             "type": "array",
             "uniqueItems": true,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "wallRight": {
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "backwalls": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/positioned_element" }
           },
           "boards": {
@@ -3137,16 +3136,17 @@ module.exports={
           "handles": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/handle_element" }
           },
           "legPlatforms": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "legs": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           }
         }
@@ -3201,10 +3201,6 @@ module.exports={
         "h_position": { "$ref": "#/definitions/h_position" }
       }
     },
-    "handle_type": {
-      "type": "string",
-      "enum": [ "center", "left", "right" ]
-    },
     "handle_element": {
       "type": "object",
       "additionalProperties": false,
@@ -3213,7 +3209,10 @@ module.exports={
         "sku": { "$ref": "#/definitions/sku" },
         "position": { "$ref": "#/definitions/position" },
         "h_position": { "$ref": "#/definitions/h_position" },
-        "type": { "$ref": "#/definitions/handle_type" }
+        "type": {
+          "type": "string",
+          "enum": [ "center", "left", "right" ]
+        }
       }
     }
   },
@@ -3228,27 +3227,26 @@ module.exports={
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight", "backwalls", "handles", "legPlatforms", "legs" ],
-        "dependencies": {
-          "legPlatforms": [ "legs" ],
-          "legs": [ "legPlatforms" ]
-        },
+        "required": [ "position", "wallLeft", "wallRight", "boards", "fronts" ],
         "properties": {
           "position": { "$ref": "#/definitions/position" },
           "wallLeft": {
             "type": "array",
             "uniqueItems": true,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "wallRight": {
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "backwalls": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/positioned_element" }
           },
           "boards": {
@@ -3265,16 +3263,17 @@ module.exports={
           "handles": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/handle_element" }
           },
           "legPlatforms": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "legs": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           }
         }
@@ -3324,10 +3323,6 @@ module.exports={
       "oneOf": [
         {
           "additionalProperties": false,
-          "properties": {}
-        },
-        {
-          "additionalProperties": false,
           "required": [ "single_drawer" ],
           "properties": {
             "single_drawer": { "$ref": "#/definitions/drawer" }
@@ -3345,7 +3340,7 @@ module.exports={
     }
   },
   "type": "object",
-  "required": [ "tops", "legs", "extensions", "frames", "back_drawers", "front_drawers" ],
+  "required": [ "tops", "legs" ],
   "additionalProperties": false,
   "properties": {
     "tops": {
@@ -3382,6 +3377,7 @@ module.exports={
     "extensions": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" }
@@ -3390,6 +3386,7 @@ module.exports={
     "frames": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" },
@@ -3433,10 +3430,6 @@ module.exports={
       "oneOf": [
         {
           "additionalProperties": false,
-          "properties": {}
-        },
-        {
-          "additionalProperties": false,
           "required": [ "single_drawer" ],
           "properties": {
             "single_drawer": { "$ref": "#/definitions/drawer" }
@@ -3454,7 +3447,7 @@ module.exports={
     }
   },
   "type": "object",
-  "required": [ "tops", "legs", "extensions", "frames", "back_drawers", "front_drawers" ],
+  "required": [ "tops", "legs" ],
   "additionalProperties": false,
   "properties": {
     "tops": {
@@ -3491,6 +3484,7 @@ module.exports={
     "extensions": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" }
@@ -3499,6 +3493,7 @@ module.exports={
     "frames": {
       "type": "object",
       "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
         "left": { "$ref": "#/definitions/element" },
         "right": { "$ref": "#/definitions/element" },
@@ -3562,7 +3557,13 @@ module.exports={
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
-    "drawer_element": {
+    "positioned_elements": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/positioned_element" }
+    },
+    "drawer": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "sku", "z" ],
@@ -3574,15 +3575,11 @@ module.exports={
         "withoutBox": { "$ref": "#/definitions/withoutBox" }
       }
     },
-    "positioned_elements": {
+    "drawers": {
       "type": "array",
       "uniqueItems": true,
-      "items": { "$ref": "#/definitions/positioned_element" }
-    },
-    "drawer_elements": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "$ref": "#/definitions/drawer_element" }
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/drawer" }
     }
   },
   "type": "object",
@@ -3597,10 +3594,11 @@ module.exports={
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "cluster", "corpus", "backwall", "doors", "boards", "drawers", "shoe_drawers", "cloth_rails", "lifts"  ],
+        "required": [ "cluster", "corpus", "backwall", "doors"  ],
         "properties": {
           "cluster": { "$ref": "#/definitions/cluster" },
           "corpus": { "$ref": "#/definitions/element" },
+          "backwall": { "$ref": "#/definitions/element" },
           "doors": {
             "type": "array",
             "items": {
@@ -3618,11 +3616,10 @@ module.exports={
             }
           },
           "boards": { "$ref": "#/definitions/positioned_elements" },
-          "drawers": { "$ref": "#/definitions/drawer_elements" },
+          "drawers": { "$ref": "#/definitions/drawers" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
-          "lifts": { "$ref": "#/definitions/positioned_elements" },
-          "backwall": { "$ref": "#/definitions/element" }
+          "lifts": { "$ref": "#/definitions/positioned_elements" }
         }
       }
     }
@@ -3667,6 +3664,7 @@ module.exports={
     "positioned_elements": {
       "type": "array",
       "uniqueItems": true,
+      "minItems": 1,
       "items": { "$ref": "#/definitions/positioned_element" }
     }
   },
@@ -3682,10 +3680,11 @@ module.exports={
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "cluster", "corpus", "backwall", "doors", "boards", "drawers", "shoe_drawers", "cloth_rails", "lifts"  ],
+        "required": [ "cluster", "corpus", "backwall", "doors"  ],
         "properties": {
           "cluster": { "$ref": "#/definitions/cluster" },
           "corpus": { "$ref": "#/definitions/element" },
+          "backwall": { "$ref": "#/definitions/element" },
           "doors": {
             "type": "array",
             "items": {
@@ -3706,8 +3705,7 @@ module.exports={
           "drawers": { "$ref": "#/definitions/positioned_elements" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
-          "lifts": { "$ref": "#/definitions/positioned_elements" },
-          "backwall": { "$ref": "#/definitions/element" }
+          "lifts": { "$ref": "#/definitions/positioned_elements" }
         }
       }
     }

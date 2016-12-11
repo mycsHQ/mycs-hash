@@ -70,7 +70,7 @@ describe('test mycs-hash-design furniture structure hashing lib for the mycs pro
     # - the hash in the data.json is the one in the prod database the same day
     # There is a discrepancy that should not exist !!!
     # (the hash algorithm probably drifted which is what this lib is meant to prevent)
-    expectedHash = '380989a64d2ff9eb7fc7ab03c109d1c14227bffc'
+    expectedHash = '08ac7846587e0e0537c7e7a3b66e92f88309eedc'
     expect(hashDesign(input)).toEqual(expectedHash)
     done()
 

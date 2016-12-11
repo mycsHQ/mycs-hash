@@ -87,27 +87,26 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [ "boards", "fronts", "position", "wallLeft", "wallRight", "backwalls", "handles", "legPlatforms", "legs" ],
-        "dependencies": {
-          "legPlatforms": [ "legs" ],
-          "legs": [ "legPlatforms" ]
-        },
+        "required": [ "position", "wallLeft", "wallRight", "boards", "fronts" ],
         "properties": {
           "position": { "$ref": "#/definitions/position" },
           "wallLeft": {
             "type": "array",
             "uniqueItems": true,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "wallRight": {
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
+            "maxItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "backwalls": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/positioned_element" }
           },
           "boards": {
@@ -124,16 +123,17 @@
           "handles": {
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": { "$ref": "#/definitions/handle_element" }
           },
           "legPlatforms": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           },
           "legs": {
             "type": "array",
-            "description": "type for shelf's legs",
+            "minItems": 1,
             "items": { "$ref": "#/definitions/element" }
           }
         }

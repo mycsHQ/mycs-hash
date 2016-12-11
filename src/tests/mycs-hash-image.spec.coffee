@@ -151,7 +151,7 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
     # - the hash in the data.json is the one in the prod database the same day
     # There is a discrepancy that should not exist !!!
     # (the hash algorithm probably drifted which is what this lib is meant to prevent)
-    expectedHash = 'f9f94b0bb821140de476d8696c44ac3c90d70174'
+    expectedHash = 'a2a631fa6cf7b6dce4be2ac9f8ea4f00fc3498e0'
     expect(hashImage(input)).toEqual(expectedHash)
     done()
 
