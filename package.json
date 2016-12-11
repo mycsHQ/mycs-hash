@@ -42,7 +42,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.4.0",
     "json-stable-stringify": "^1.0.0",
-    "jsonschema": "git+ssh://git@github.com/mycsHQ/jsonschema.git",
+    "jsonschema": "github:mycshq/jsonschema#1.1.1",
     "jssha": "^2.0.1",
     "sha-lite": "^0.1.5",
     "uglify": "^0.1.5",
