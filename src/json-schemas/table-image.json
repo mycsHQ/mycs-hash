@@ -7,10 +7,6 @@
       "description": "unique id of a component in our furniture component store",
       "pattern": "^(\\d+\\.)+[\\d]+$"
     },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
-    },
     "invisible": {
       "type": "boolean",
       "description": "determines whether element must be rendered or not"
@@ -21,7 +17,6 @@
       "required": [ "sku" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },

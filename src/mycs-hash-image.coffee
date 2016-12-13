@@ -6,8 +6,8 @@ stringifier = require('./stringify')
 V = require('jsonschema').Validator
 validator = new V()
 
-shelfSchema = require('./json-schemas/shelf-image.json')
-couchtableSchema = require('./json-schemas/couchtable-image.json')
+shelfSchema = require('./json-schemas/shelf.json')
+couchtableSchema = require('./json-schemas/couchtable.json')
 tableSchema = require('./json-schemas/table-image.json')
 wardrobeSchema = require('./json-schemas/wardrobe-image.json')
 
@@ -90,10 +90,11 @@ _validateData = (data) ->
   unless data.hasOwnProperty('structure')
     throw new Error('missing structure attribute')
 
-  _validateStructure(data.structure)
-
   unless Object.keys(data).length is 4
     throw new Error('there must exactly be the attributes: camera, structure, stage and quality')
+
+  unless data.quality is 'label'
+    _validateStructure(data.structure)
 
 #
 # @param {object} deserialized json object representing a piece of furniture

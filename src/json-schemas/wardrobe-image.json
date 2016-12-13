@@ -16,17 +16,9 @@
       "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
       "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
-    },
     "invisible": {
       "type": "boolean",
       "description": "determines whether element must be rendered or not"
-    },
-    "withoutBox": {
-      "type": "boolean",
-      "description": "determines whether drawers must be rendered with box or not"
     },
     "element": {
       "type": "object",
@@ -34,7 +26,6 @@
       "required": [ "sku" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
@@ -45,7 +36,6 @@
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "z": { "$ref": "#/definitions/z" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
@@ -54,24 +44,6 @@
       "uniqueItems": true,
       "minItems": 1,
       "items": { "$ref": "#/definitions/positioned_element" }
-    },
-    "drawer": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku", "z" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "z": { "$ref": "#/definitions/z" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" },
-        "withoutBox": { "$ref": "#/definitions/withoutBox" }
-      }
-    },
-    "drawers": {
-      "type": "array",
-      "uniqueItems": true,
-      "minItems": 1,
-      "items": { "$ref": "#/definitions/drawer" }
     }
   },
   "type": "object",
@@ -108,7 +80,7 @@
             }
           },
           "boards": { "$ref": "#/definitions/positioned_elements" },
-          "drawers": { "$ref": "#/definitions/drawers" },
+          "drawers": { "$ref": "#/definitions/positioned_elements" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
           "lifts": { "$ref": "#/definitions/positioned_elements" }

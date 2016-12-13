@@ -39,10 +39,10 @@ _validateData = (data) ->
   unless data.hasOwnProperty('structure')
     throw new Error('missing structure attribute')
 
-  _validateStructure(data.structure)
-
   unless Object.keys(data).length is 1
     throw new Error('there must be structure attribute only')
+
+  _validateStructure(data.structure)
 
 #
 # Validate structure. Json-schema validation

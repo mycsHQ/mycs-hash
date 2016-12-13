@@ -2930,56 +2930,6 @@ module.exports={
       "description": "unique id of a component in our furniture component store",
       "pattern": "^(\\d+\\.)+[\\d]+$"
     },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
-    },
-    "invisible": {
-      "type": "boolean",
-      "description": "determines whether element must be rendered or not"
-    },
-    "element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    }
-  },
-  "type": "array",
-  "minItems": 1,
-  "items": {
-    "type": "object",
-    "additionalProperties": false,
-    "required": [ "clegs", "ctop"],
-    "properties": {
-      "clegs": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [ "back", "front_left", "front_right" ],
-        "properties": {
-          "back": { "$ref": "#/definitions/element" },
-          "front_left": { "$ref": "#/definitions/element" },
-          "front_right": { "$ref": "#/definitions/element" }
-        }
-      },
-      "ctop": { "$ref": "#/definitions/element" }
-    }
-  }
-}
-},{}],12:[function(require,module,exports){
-module.exports={
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/couchtable",
-  "definitions": {
-    "sku": {
-      "type": "string",
-      "description": "unique id of a component in our furniture component store",
-      "pattern": "^(\\d+\\.)+[\\d]+$"
-    },
     "element": {
       "type": "object",
       "additionalProperties": false,
@@ -3010,151 +2960,7 @@ module.exports={
     }
   }
 }
-},{}],13:[function(require,module,exports){
-module.exports={
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/shelf",
-  "definitions": {
-    "sku": {
-      "type": "string",
-      "description": "unique id of a component in our furniture component store",
-      "pattern": "^(\\d+\\.)+[\\d]+$"
-    },
-    "position": {
-      "type": "number",
-      "description": "vertical position of the element",
-      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
-    },
-    "h_position": {
-      "type": "number",
-      "description": "horizontal position of the element",
-      "pattern": "^-?\\d{1,3}(\\.\\d)*$"
-    },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
-    },
-    "invisible": {
-      "type": "boolean",
-      "description": "determines whether element must be rendered or not"
-    },
-    "element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    },
-    "positioned_element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku", "position" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "position": { "$ref": "#/definitions/position" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    },
-    "horizontally_positioned_element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku", "position", "h_position" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "position": { "$ref": "#/definitions/position" },
-        "h_position": { "$ref": "#/definitions/h_position" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    },
-    "handle_type": {
-      "type": "string",
-      "enum": [ "center", "left", "right" ]
-    },
-    "handle_element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku", "position", "h_position", "type" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "position": { "$ref": "#/definitions/position" },
-        "h_position": { "$ref": "#/definitions/h_position" },
-        "type": { "$ref": "#/definitions/handle_type" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    }
-  },
-  "type": "object",
-  "additionalProperties": false,
-  "required": [ "columns" ],
-  "properties": {
-    "columns": {
-      "type": "array",
-      "uniqueItems": true,
-      "minItems": 1,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [ "position", "wallLeft", "wallRight", "boards", "fronts" ],
-        "properties": {
-          "position": { "$ref": "#/definitions/position" },
-          "wallLeft": {
-            "type": "array",
-            "uniqueItems": true,
-            "maxItems": 1,
-            "items": { "$ref": "#/definitions/element" }
-          },
-          "wallRight": {
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "maxItems": 1,
-            "items": { "$ref": "#/definitions/element" }
-          },
-          "backwalls": {
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "items": { "$ref": "#/definitions/positioned_element" }
-          },
-          "boards": {
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 2,
-            "items": { "$ref": "#/definitions/positioned_element" }
-          },
-          "fronts": {
-            "type": "array",
-            "uniqueItems": true,
-            "items": { "$ref": "#/definitions/horizontally_positioned_element" }
-          },
-          "handles": {
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "items": { "$ref": "#/definitions/handle_element" }
-          },
-          "legPlatforms": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "#/definitions/element" }
-          },
-          "legs": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "#/definitions/element" }
-          }
-        }
-      }
-    }
-  }
-}
-},{}],14:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/shelf",
@@ -3281,7 +3087,7 @@ module.exports={
     }
   }
 }
-},{}],15:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/table",
@@ -3290,10 +3096,6 @@ module.exports={
       "type": "string",
       "description": "unique id of a component in our furniture component store",
       "pattern": "^(\\d+\\.)+[\\d]+$"
-    },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
     },
     "invisible": {
       "type": "boolean",
@@ -3305,7 +3107,6 @@ module.exports={
       "required": [ "sku" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
@@ -3398,7 +3199,7 @@ module.exports={
     "front_drawers": { "$ref": "#/definitions/drawers" }
   }
 }
-},{}],16:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/table",
@@ -3505,7 +3306,7 @@ module.exports={
     "front_drawers": { "$ref": "#/definitions/drawers" }
   }
 }
-},{}],17:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/wardrobe",
@@ -3524,17 +3325,9 @@ module.exports={
       "description": "translation along in the scene's upward direction for interior components, 0 being the bottom of the interior of the corpus",
       "pattern": "^-?\\d{1,3}(\\.\\d)*$"
     },
-    "label_id": {
-      "type": "string",
-      "description": "element's label id"
-    },
     "invisible": {
       "type": "boolean",
       "description": "determines whether element must be rendered or not"
-    },
-    "withoutBox": {
-      "type": "boolean",
-      "description": "determines whether drawers must be rendered with box or not"
     },
     "element": {
       "type": "object",
@@ -3542,7 +3335,6 @@ module.exports={
       "required": [ "sku" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
@@ -3553,7 +3345,6 @@ module.exports={
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "z": { "$ref": "#/definitions/z" },
-        "label_id": { "$ref": "#/definitions/label_id" },
         "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
@@ -3562,24 +3353,6 @@ module.exports={
       "uniqueItems": true,
       "minItems": 1,
       "items": { "$ref": "#/definitions/positioned_element" }
-    },
-    "drawer": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku", "z" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" },
-        "z": { "$ref": "#/definitions/z" },
-        "label_id": { "$ref": "#/definitions/label_id" },
-        "invisible": { "$ref": "#/definitions/invisible" },
-        "withoutBox": { "$ref": "#/definitions/withoutBox" }
-      }
-    },
-    "drawers": {
-      "type": "array",
-      "uniqueItems": true,
-      "minItems": 1,
-      "items": { "$ref": "#/definitions/drawer" }
     }
   },
   "type": "object",
@@ -3616,7 +3389,7 @@ module.exports={
             }
           },
           "boards": { "$ref": "#/definitions/positioned_elements" },
-          "drawers": { "$ref": "#/definitions/drawers" },
+          "drawers": { "$ref": "#/definitions/positioned_elements" },
           "shoe_drawers": { "$ref": "#/definitions/positioned_elements" },
           "cloth_rails": { "$ref": "#/definitions/positioned_elements" },
           "lifts": { "$ref": "#/definitions/positioned_elements" }
@@ -3625,7 +3398,7 @@ module.exports={
     }
   }
 }
-},{}],18:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/wardrobe",
@@ -3711,7 +3484,7 @@ module.exports={
     }
   }
 }
-},{}],19:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateData, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
 
 jsSHA = require('jssha');
@@ -3744,10 +3517,10 @@ _validateData = function(data) {
   if (!data.hasOwnProperty('structure')) {
     throw new Error('missing structure attribute');
   }
-  _validateStructure(data.structure);
   if (Object.keys(data).length !== 1) {
     throw new Error('there must be structure attribute only');
   }
+  return _validateStructure(data.structure);
 };
 
 _validateStructure = function(structure) {
@@ -3785,7 +3558,7 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable.json":12,"./json-schemas/shelf.json":14,"./json-schemas/table.json":16,"./json-schemas/wardrobe.json":18,"./stringify":21,"jsonschema":3,"jssha":5}],20:[function(require,module,exports){
+},{"./json-schemas/couchtable.json":11,"./json-schemas/shelf.json":12,"./json-schemas/table.json":14,"./json-schemas/wardrobe.json":16,"./stringify":19,"jsonschema":3,"jssha":5}],18:[function(require,module,exports){
 var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateData, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
 
 jsSHA = require('jssha');
@@ -3796,9 +3569,9 @@ V = require('jsonschema').Validator;
 
 validator = new V();
 
-shelfSchema = require('./json-schemas/shelf-image.json');
+shelfSchema = require('./json-schemas/shelf.json');
 
-couchtableSchema = require('./json-schemas/couchtable-image.json');
+couchtableSchema = require('./json-schemas/couchtable.json');
 
 tableSchema = require('./json-schemas/table-image.json');
 
@@ -3865,9 +3638,11 @@ _validateData = function(data) {
   if (!data.hasOwnProperty('structure')) {
     throw new Error('missing structure attribute');
   }
-  _validateStructure(data.structure);
   if (Object.keys(data).length !== 4) {
     throw new Error('there must exactly be the attributes: camera, structure, stage and quality');
+  }
+  if (data.quality !== 'label') {
+    return _validateStructure(data.structure);
   }
 };
 
@@ -3888,7 +3663,7 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable-image.json":11,"./json-schemas/shelf-image.json":13,"./json-schemas/table-image.json":15,"./json-schemas/wardrobe-image.json":17,"./stringify":21,"jsonschema":3,"jssha":5}],21:[function(require,module,exports){
+},{"./json-schemas/couchtable.json":11,"./json-schemas/shelf.json":12,"./json-schemas/table-image.json":13,"./json-schemas/wardrobe-image.json":15,"./stringify":19,"jsonschema":3,"jssha":5}],19:[function(require,module,exports){
 var StableJSONStringify,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -3988,4 +3763,4 @@ module.exports = {
 };
 
 
-},{"./mycs-hash-design":19,"./mycs-hash-image":20}]},{},[]);
+},{"./mycs-hash-design":17,"./mycs-hash-image":18}]},{},[]);
