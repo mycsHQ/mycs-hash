@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://mycs.com/schemas/furniture/table",
+  "definitions": {
+    "sku": {
+      "type": "string",
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "sku" ],
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" },
+        "invisible": { "$ref": "#/definitions/invisible" }
+      }
+    },
+    "drawer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "drawer_box", "drawer_front" ],
+      "properties": {
+        "drawer_box": { "$ref": "#/definitions/element" },
+        "drawer_front": { "$ref": "#/definitions/element" }
+      }
+    },
+    "drawers": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [ "single_drawer" ],
+          "properties": {
+            "single_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "left_drawer", "right_drawer" ],
+          "properties": {
+            "left_drawer": { "$ref": "#/definitions/drawer" },
+            "right_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "required": [ "tops", "legs" ],
+  "additionalProperties": false,
+  "properties": {
+    "tops": {
+      "type": "object",
+      "required": [ "tabletop" ],
+      "additionalProperties": false,
+      "properties": {
+        "tabletop": { "$ref": "#/definitions/element" }
+      }
+    },
+    "legs": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [ "left", "right" ],
+          "properties": {
+            "left": { "$ref": "#/definitions/element" },
+            "right": { "$ref": "#/definitions/element" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "back_left", "back_right", "front_left", "front_right" ],
+          "properties": {
+            "back_left": { "$ref": "#/definitions/element" },
+            "back_right": { "$ref": "#/definitions/element" },
+            "front_left": { "$ref": "#/definitions/element" },
+            "front_right": { "$ref": "#/definitions/element" }
+          }
+        }
+      ]
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "left": { "$ref": "#/definitions/element" },
+        "right": { "$ref": "#/definitions/element" }
+      }
+    },
+    "frames": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "left": { "$ref": "#/definitions/element" },
+        "right": { "$ref": "#/definitions/element" },
+        "back": { "$ref": "#/definitions/element" },
+        "front": { "$ref": "#/definitions/element" }
+      }
+    },
+    "back_drawers": { "$ref": "#/definitions/drawers" },
+    "front_drawers": { "$ref": "#/definitions/drawers" }
+  }
+}

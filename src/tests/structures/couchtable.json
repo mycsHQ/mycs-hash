@@ -1,0 +1,39 @@
+{
+  "camera": {"angle": 30},
+  "quality": "normal",
+  "stage": "default",
+  "structure": [
+    {
+      "ctop": {
+        "sku": "302.100.10"
+      },
+      "clegs": {
+        "front_right": {
+          "sku": "302.105.03"
+        },
+        "front_left": {
+          "sku": "302.105.03"
+        },
+        "back": {
+          "sku": "302.105.03"
+        }
+      }
+    },
+    {
+      "ctop": {
+        "sku": "302.100.05"
+      },
+      "clegs": {
+        "front_right": {
+          "sku": "302.105.01"
+        },
+        "front_left": {
+          "sku": "302.105.01"
+        },
+        "back": {
+          "sku": "302.105.01"
+        }
+      }
+    }
+  ]
+}

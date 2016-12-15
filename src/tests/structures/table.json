@@ -1,0 +1,22 @@
+{
+  "camera": {
+    "angle": 30
+  },
+  "quality": "normal",
+  "stage": "default",
+  "structure": {
+    "tops": {
+      "tabletop": {
+        "sku": "301.100.00"
+      }
+    },
+    "legs": {
+      "left": {
+        "sku": "301.112.03"
+      },
+      "right": {
+        "sku": "301.112.21"
+      }
+    }
+  }
+}

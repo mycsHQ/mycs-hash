@@ -1,12 +1,23 @@
 {
-  "uuid": "LwAf6LoS",
-  "furniture_type": "shelf",
+  "camera": {
+    "angle": 0
+  },
+  "quality": "hires",
+  "stage": "default",
   "structure": {
     "columns": [
       {
         "position": 0,
-        "wallLeft": [{"sku": "101.105.02"}],
-        "wallRight": [{"sku": "101.105.02"}],
+        "wallLeft": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
         "fronts": [],
         "boards": [
           {
@@ -41,7 +52,11 @@
       },
       {
         "position": 1,
-        "wallRight": [{"sku": "101.105.02"}],
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
         "wallLeft": [],
         "fronts": [],
         "boards": [
@@ -77,7 +92,11 @@
       },
       {
         "position": 2,
-        "wallRight": [{"sku": "101.105.02"}],
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
         "wallLeft": [],
         "fronts": [],
         "boards": [
@@ -113,7 +132,11 @@
       },
       {
         "position": 3,
-        "wallRight": [{"sku": "101.105.02"}],
+        "wallRight": [
+          {
+            "sku": "101.105.02"
+          }
+        ],
         "wallLeft": [],
         "fronts": [],
         "boards": [
@@ -148,78 +171,5 @@
         ]
       }
     ]
-  },
-  "image_url": "//www.mycs.com/assets/cae7aebbfabd83c9aa10e5e37cb6bce1ac567517.jpg",
-  "status": "done",
-  "created_at": "2015-06-17T10:10:37.726Z",
-  "updated_at": "2015-07-31T15:38:34.953Z",
-  "is_inspiration": true,
-  "name": null,
-  "tags": {
-    "best-sellers": 2322,
-    "big": 4693,
-    "designertables": 8140,
-    "desks-berlin": 253,
-    "desks-office-tables": 1186,
-    "desks-white": 1566,
-    "desks-work-tables": 300,
-    "desks": 8340,
-    "dining-tables-berlin": 2714,
-    "dining-tables-big": 2503,
-    "dining-tables-darkbrown": 9624,
-    "dining-tables-light": 6241,
-    "dining-tables-modern": 6081,
-    "dining-tables-oak": 6371,
-    "dining-tables-small": 3989,
-    "dining-tables-solid-wood": 8884,
-    "dining-tables-white": 5952,
-    "dining-tables-wood": 6750,
-    "dining-tables": 611,
-    "kitchen-tables-solid-wood": 7194,
-    "kitchen-tables": 802,
-    "wood-tables-solid-wood": 9718,
-    "wood-tables": 1131,
-    "tables": 5052,
-    "all": 7383
-  },
-  "colors": null,
-  "specs": {
-    "doors": 0,
-    "drawers": 0
-  },
-  "dimensions": {
-    "height": 2323,
-    "length": 2999,
-    "width": 342
-  },
-  "price": {
-    "at": {
-      "totalPrice": 722.6890756302521,
-      "totalPriceInclTaxes": 860,
-      "taxes": 137.3109243697479,
-      "taxPercentage": 19,
-      "currencyCode": "EUR",
-      "shippingDuration": 1
-    },
-    "ch": {
-      "totalPrice": 837.037037037037,
-      "totalPriceInclTaxes": 904,
-      "taxes": 66.96296296296305,
-      "taxPercentage": 8,
-      "currencyCode": "CHF",
-      "shippingDuration": 1
-    },
-    "de": {
-      "totalPrice": 673.109243697479,
-      "totalPriceInclTaxes": 801,
-      "taxes": 127.89075630252103,
-      "taxPercentage": 19,
-      "currencyCode": "EUR",
-      "shippingDuration": 1
-    }
-  },
-  "hash": "cae7aebbfabd83c9aa10e5e37cb6bce1ac567517",
-  "is_verified": true,
-  "image_type": "final",
-  "camera": {"angle": 0}
+  }
 }
