@@ -24,13 +24,6 @@ HASH_ALGORITHM = 'SHA-1'
 HMAC_KEY = '0111201600'
 
 #
-# Json-schema error. Extends Error with extra data
-#
-class JsonSchemaError extends Error
-  constructor: (message, @data) ->
-    super(message)
-
-#
 # Clone deep
 #
 # @param {object} obj

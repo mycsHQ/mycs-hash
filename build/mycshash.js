@@ -3518,9 +3518,7 @@ module.exports={
   }
 }
 },{}],18:[function(require,module,exports){
-var HASH_ALGORITHM, HMAC_KEY, JsonSchemaError, V, VERSION, _cloneDeep, _validateInput, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema,
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
+var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateInput, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
 
 jsSHA = require('jssha');
 
@@ -3543,18 +3541,6 @@ VERSION = '0.2';
 HASH_ALGORITHM = 'SHA-1';
 
 HMAC_KEY = '0111201600';
-
-JsonSchemaError = (function(superClass) {
-  extend(JsonSchemaError, superClass);
-
-  function JsonSchemaError(message, data1) {
-    this.data = data1;
-    JsonSchemaError.__super__.constructor.call(this, message);
-  }
-
-  return JsonSchemaError;
-
-})(Error);
 
 _cloneDeep = function(obj) {
   return JSON.parse(JSON.stringify(obj));
