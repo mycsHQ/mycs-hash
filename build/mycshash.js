@@ -2963,6 +2963,39 @@ module.exports={
 },{}],12:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [ "structure", "quality", "stage", "camera" ],
+  "properties": {
+    "structure": {
+      "oneOf": [
+        { "type": "object" },
+        { "type": "array" }
+      ]
+    },
+    "quality": {
+      "type": "string",
+      "enum": [ "label", "normal", "hires" ]
+    },
+    "stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "angle", "vAngle" ],
+      "properties": {
+        "angle": { "type": "number" },
+        "vAngle": { "type": "number" }
+      }
+    }
+  }
+}
+
+},{}],13:[function(require,module,exports){
+module.exports={
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/shelf",
   "definitions": {
     "sku": {
@@ -3087,10 +3120,10 @@ module.exports={
     }
   }
 }
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/table",
+  "id": "http://mycs.com/schemas/furniture/table-image",
   "definitions": {
     "sku": {
       "type": "string",
@@ -3108,113 +3141,6 @@ module.exports={
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "invisible": { "$ref": "#/definitions/invisible" }
-      }
-    },
-    "drawer": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "drawer_box", "drawer_front" ],
-      "properties": {
-        "drawer_box": { "$ref": "#/definitions/element" },
-        "drawer_front": { "$ref": "#/definitions/element" }
-      }
-    },
-    "drawers": {
-      "type": "object",
-      "oneOf": [
-        {
-          "additionalProperties": false,
-          "required": [ "single_drawer" ],
-          "properties": {
-            "single_drawer": { "$ref": "#/definitions/drawer" }
-          }
-        },
-        {
-          "additionalProperties": false,
-          "required": [ "left_drawer", "right_drawer" ],
-          "properties": {
-            "left_drawer": { "$ref": "#/definitions/drawer" },
-            "right_drawer": { "$ref": "#/definitions/drawer" }
-          }
-        }
-      ]
-    }
-  },
-  "type": "object",
-  "required": [ "tops", "legs" ],
-  "additionalProperties": false,
-  "properties": {
-    "tops": {
-      "type": "object",
-      "required": [ "tabletop" ],
-      "additionalProperties": false,
-      "properties": {
-        "tabletop": { "$ref": "#/definitions/element" }
-      }
-    },
-    "legs": {
-      "type": "object",
-      "oneOf": [
-        {
-          "additionalProperties": false,
-          "required": [ "left", "right" ],
-          "properties": {
-            "left": { "$ref": "#/definitions/element" },
-            "right": { "$ref": "#/definitions/element" }
-          }
-        },
-        {
-          "additionalProperties": false,
-          "required": [ "back_left", "back_right", "front_left", "front_right" ],
-          "properties": {
-            "back_left": { "$ref": "#/definitions/element" },
-            "back_right": { "$ref": "#/definitions/element" },
-            "front_left": { "$ref": "#/definitions/element" },
-            "front_right": { "$ref": "#/definitions/element" }
-          }
-        }
-      ]
-    },
-    "extensions": {
-      "type": "object",
-      "additionalProperties": false,
-      "minProperties": 1,
-      "properties": {
-        "left": { "$ref": "#/definitions/element" },
-        "right": { "$ref": "#/definitions/element" }
-      }
-    },
-    "frames": {
-      "type": "object",
-      "additionalProperties": false,
-      "minProperties": 1,
-      "properties": {
-        "left": { "$ref": "#/definitions/element" },
-        "right": { "$ref": "#/definitions/element" },
-        "back": { "$ref": "#/definitions/element" },
-        "front": { "$ref": "#/definitions/element" }
-      }
-    },
-    "back_drawers": { "$ref": "#/definitions/drawers" },
-    "front_drawers": { "$ref": "#/definitions/drawers" }
-  }
-}
-},{}],14:[function(require,module,exports){
-module.exports={
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/table",
-  "definitions": {
-    "sku": {
-      "type": "string",
-      "description": "unique id of a component in our furniture component store",
-      "pattern": "^(\\d+\\.)+[\\d]+$"
-    },
-    "element": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [ "sku" ],
-      "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
       }
     },
     "drawer": {
@@ -3309,7 +3235,114 @@ module.exports={
 },{}],15:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://mycs.com/schemas/furniture/wardrobe",
+  "id": "http://mycs.com/schemas/furniture/table",
+  "definitions": {
+    "sku": {
+      "type": "string",
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "element": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "sku" ],
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" }
+      }
+    },
+    "drawer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "drawer_box", "drawer_front" ],
+      "properties": {
+        "drawer_box": { "$ref": "#/definitions/element" },
+        "drawer_front": { "$ref": "#/definitions/element" }
+      }
+    },
+    "drawers": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [ "single_drawer" ],
+          "properties": {
+            "single_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "left_drawer", "right_drawer" ],
+          "properties": {
+            "left_drawer": { "$ref": "#/definitions/drawer" },
+            "right_drawer": { "$ref": "#/definitions/drawer" }
+          }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "required": [ "tops", "legs" ],
+  "additionalProperties": false,
+  "properties": {
+    "tops": {
+      "type": "object",
+      "required": [ "tabletop" ],
+      "additionalProperties": false,
+      "properties": {
+        "tabletop": { "$ref": "#/definitions/element" }
+      }
+    },
+    "legs": {
+      "type": "object",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "required": [ "left", "right" ],
+          "properties": {
+            "left": { "$ref": "#/definitions/element" },
+            "right": { "$ref": "#/definitions/element" }
+          }
+        },
+        {
+          "additionalProperties": false,
+          "required": [ "back_left", "back_right", "front_left", "front_right" ],
+          "properties": {
+            "back_left": { "$ref": "#/definitions/element" },
+            "back_right": { "$ref": "#/definitions/element" },
+            "front_left": { "$ref": "#/definitions/element" },
+            "front_right": { "$ref": "#/definitions/element" }
+          }
+        }
+      ]
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "left": { "$ref": "#/definitions/element" },
+        "right": { "$ref": "#/definitions/element" }
+      }
+    },
+    "frames": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "left": { "$ref": "#/definitions/element" },
+        "right": { "$ref": "#/definitions/element" },
+        "back": { "$ref": "#/definitions/element" },
+        "front": { "$ref": "#/definitions/element" }
+      }
+    },
+    "back_drawers": { "$ref": "#/definitions/drawers" },
+    "front_drawers": { "$ref": "#/definitions/drawers" }
+  }
+}
+},{}],16:[function(require,module,exports){
+module.exports={
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://mycs.com/schemas/furniture/wardrobe-image",
   "definitions": {
     "sku": {
       "type": "string",
@@ -3398,7 +3431,7 @@ module.exports={
     }
   }
 }
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports={
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://mycs.com/schemas/furniture/wardrobe",
@@ -3484,8 +3517,10 @@ module.exports={
     }
   }
 }
-},{}],17:[function(require,module,exports){
-var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateData, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
+},{}],18:[function(require,module,exports){
+var HASH_ALGORITHM, HMAC_KEY, JsonSchemaError, V, VERSION, _cloneDeep, _validateInput, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema,
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 jsSHA = require('jssha');
 
@@ -3509,11 +3544,23 @@ HASH_ALGORITHM = 'SHA-1';
 
 HMAC_KEY = '0111201600';
 
+JsonSchemaError = (function(superClass) {
+  extend(JsonSchemaError, superClass);
+
+  function JsonSchemaError(message, data1) {
+    this.data = data1;
+    JsonSchemaError.__super__.constructor.call(this, message);
+  }
+
+  return JsonSchemaError;
+
+})(Error);
+
 _cloneDeep = function(obj) {
   return JSON.parse(JSON.stringify(obj));
 };
 
-_validateData = function(data) {
+_validateInput = function(data) {
   if (!data.hasOwnProperty('structure')) {
     throw new Error('missing structure attribute');
   }
@@ -3525,13 +3572,13 @@ _validateData = function(data) {
 
 _validateStructure = function(structure) {
   var couchtableRes, error, shelfRes, tableRes, wardrobeRes;
-  structure = _cloneDeep(structure);
   shelfRes = validator.validate(structure, shelfSchema);
   couchtableRes = validator.validate(structure, couchtableSchema);
   tableRes = validator.validate(structure, tableSchema);
   wardrobeRes = validator.validate(structure, wardrobeSchema);
   if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
-    error = {
+    error = new Error('structure is invalid for any existing json-schema');
+    error.data = {
       structure: structure,
       schemas: {
         shelf: shelfRes.errors,
@@ -3540,14 +3587,14 @@ _validateStructure = function(structure) {
         wardrobe: wardrobeRes.errors
       }
     };
-    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2));
+    throw error;
   }
 };
 
 hashingFunction = function(data) {
   var shaObj, stringToHash;
   data = _cloneDeep(data);
-  _validateData(data);
+  _validateInput(data);
   stringToHash = stringifier.stringify(data);
   shaObj = new jsSHA(HASH_ALGORITHM, "TEXT");
   shaObj.setHMACKey(HMAC_KEY, "TEXT");
@@ -3558,8 +3605,8 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable.json":11,"./json-schemas/shelf.json":12,"./json-schemas/table.json":14,"./json-schemas/wardrobe.json":16,"./stringify":19,"jsonschema":3,"jssha":5}],18:[function(require,module,exports){
-var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateData, _validateStructure, couchtableSchema, hashingFunction, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
+},{"./json-schemas/couchtable.json":11,"./json-schemas/shelf.json":13,"./json-schemas/table.json":15,"./json-schemas/wardrobe.json":17,"./stringify":20,"jsonschema":3,"jssha":5}],19:[function(require,module,exports){
+var HASH_ALGORITHM, HMAC_KEY, V, VERSION, _cloneDeep, _validateInput, _validateStructure, couchtableSchema, hashingFunction, inputDataSchema, jsSHA, shelfSchema, stringifier, tableSchema, validator, wardrobeSchema;
 
 jsSHA = require('jssha');
 
@@ -3577,6 +3624,8 @@ tableSchema = require('./json-schemas/table-image.json');
 
 wardrobeSchema = require('./json-schemas/wardrobe-image.json');
 
+inputDataSchema = require('./json-schemas/image-input-data.json');
+
 VERSION = '0.2';
 
 HASH_ALGORITHM = 'SHA-1';
@@ -3589,13 +3638,13 @@ _cloneDeep = function(obj) {
 
 _validateStructure = function(structure) {
   var couchtableRes, error, shelfRes, tableRes, wardrobeRes;
-  structure = _cloneDeep(structure);
   shelfRes = validator.validate(structure, shelfSchema);
   couchtableRes = validator.validate(structure, couchtableSchema);
   tableRes = validator.validate(structure, tableSchema);
   wardrobeRes = validator.validate(structure, wardrobeSchema);
   if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
-    error = {
+    error = new Error('structure is invalid for any existing json-schema');
+    error.data = {
       structure: structure,
       schemas: {
         shelf: shelfRes.errors,
@@ -3604,42 +3653,15 @@ _validateStructure = function(structure) {
         wardrobe: wardrobeRes.errors
       }
     };
-    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2));
+    throw error;
   }
 };
 
-_validateData = function(data) {
-  if (!data.hasOwnProperty('camera')) {
-    throw new Error('missing camera attribute');
-  }
-  if (!data.camera.hasOwnProperty('angle')) {
-    throw new Error('missing angle attribute in camera');
-  }
-  if (!(typeof data.camera.angle === 'number' && isFinite(data.camera.angle))) {
-    throw new Error('invalid camera angle');
-  }
-  if (data.camera.hasOwnProperty('vAngle')) {
-    if (!(typeof data.camera.vAngle === 'number' && isFinite(data.camera.vAngle))) {
-      throw new Error('invalid camera vAngle');
-    }
-  }
-  if (!data.hasOwnProperty('quality')) {
-    throw new Error('missing quality attribute');
-  }
-  if (!(typeof data.quality === 'string' && data.quality)) {
-    throw new Error('invalid quality attribute');
-  }
-  if (!data.hasOwnProperty('stage')) {
-    throw new Error('missing stage attribute');
-  }
-  if (!(typeof data.stage === 'string' && data.stage)) {
-    throw new Error('invalid stage attribute');
-  }
-  if (!data.hasOwnProperty('structure')) {
-    throw new Error('missing structure attribute');
-  }
-  if (Object.keys(data).length !== 4) {
-    throw new Error('there must exactly be the attributes: camera, structure, stage and quality');
+_validateInput = function(data) {
+  var result;
+  result = validator.validate(data, inputDataSchema);
+  if (result.errors.length) {
+    throw new Error("invalid input: " + result.errors);
   }
   if (data.quality !== 'label') {
     return _validateStructure(data.structure);
@@ -3649,10 +3671,7 @@ _validateData = function(data) {
 hashingFunction = function(data) {
   var shaObj, stringToHash;
   data = _cloneDeep(data);
-  _validateData(data);
-  if (data.camera.vAngle == null) {
-    data.camera.vAngle = 0;
-  }
+  _validateInput(data);
   stringToHash = stringifier.stringify(data);
   shaObj = new jsSHA(HASH_ALGORITHM, "TEXT");
   shaObj.setHMACKey(HMAC_KEY, "TEXT");
@@ -3663,7 +3682,7 @@ hashingFunction = function(data) {
 module.exports = hashingFunction;
 
 
-},{"./json-schemas/couchtable.json":11,"./json-schemas/shelf.json":12,"./json-schemas/table-image.json":13,"./json-schemas/wardrobe-image.json":15,"./stringify":19,"jsonschema":3,"jssha":5}],19:[function(require,module,exports){
+},{"./json-schemas/couchtable.json":11,"./json-schemas/image-input-data.json":12,"./json-schemas/shelf.json":13,"./json-schemas/table-image.json":14,"./json-schemas/wardrobe-image.json":16,"./stringify":20,"jsonschema":3,"jssha":5}],20:[function(require,module,exports){
 var StableJSONStringify,
   bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -3763,4 +3782,4 @@ module.exports = {
 };
 
 
-},{"./mycs-hash-design":17,"./mycs-hash-image":18}]},{},[]);
+},{"./mycs-hash-design":18,"./mycs-hash-image":19}]},{},[]);

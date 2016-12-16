@@ -1,6 +1,7 @@
 {
   "camera": {
-    "angle": 0
+    "angle": 0,
+    "vAngle": 0
   },
   "quality": "hires",
   "stage": "default",
