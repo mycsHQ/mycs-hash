@@ -35,7 +35,7 @@ _cloneDeep = (obj) -> JSON.parse(JSON.stringify(obj))
 #
 # @param {object} deserialized json object representing a piece of furniture
 #
-_validateData = (data) ->
+_validateInput = (data) ->
   unless data.hasOwnProperty('structure')
     throw new Error('missing structure attribute')
 
@@ -50,15 +50,14 @@ _validateData = (data) ->
 # @param {object} structure
 #
 _validateStructure = (structure) ->
-  structure = _cloneDeep(structure)
-
   shelfRes = validator.validate(structure, shelfSchema)
   couchtableRes = validator.validate(structure, couchtableSchema)
   tableRes = validator.validate(structure, tableSchema)
   wardrobeRes = validator.validate(structure, wardrobeSchema)
 
   if shelfRes.errors.length and couchtableRes.errors.length and tableRes.errors.length and wardrobeRes.errors.length
-    error = {
+    error = new Error('structure is invalid for any existing json-schema')
+    error.data = {
       structure: structure
       schemas: {
         shelf: shelfRes.errors
@@ -67,7 +66,8 @@ _validateStructure = (structure) ->
         wardrobe: wardrobeRes.errors
       }
     }
-    throw new Error('structure is invalid for any existing schema' + JSON.stringify(error, null, 2))
+
+    throw error
 
 #
 # Hashing function
@@ -76,8 +76,8 @@ _validateStructure = (structure) ->
 #
 hashingFunction = (data) ->
   data = _cloneDeep(data)
-  # validate the input
-  _validateData(data)
+
+  _validateInput(data)
 
   # produce the serialized json to be hashed
   stringToHash = stringifier.stringify(data)

@@ -1,5 +1,8 @@
 {
-  "camera": {"angle": 0},
+  "camera": {
+    "angle": 0,
+    "vAngle": 0
+  },
   "quality": "hires",
   "stage": "default",
   "structure": {

@@ -1,5 +1,8 @@
 {
-  "camera": {"angle": 30},
+  "camera": {
+    "angle": 30,
+    "vAngle": 0
+  },
   "quality": "normal",
   "stage": "default",
   "structure": [

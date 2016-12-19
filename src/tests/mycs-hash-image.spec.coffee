@@ -70,13 +70,16 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
   it('should not accept input with other attributes', (done) ->
     input = _.cloneDeep(shelf)
     input.otherAttr = "woohoo"
-    testException(input, 'camera, structure, stage and quality', done)
+    testException(input, '"otherAttr" exists in instance when not allowed', done)
   )
 
   it('should produce the same hash for different attribute order', (done) ->
 
     struct1 = {
-      camera: { angle: 0 }
+      camera: {
+        angle: 0,
+        vAngle: 0
+      }
       structure: [{
         clegs: {
           back: { sku: '000.000.000' },
@@ -99,7 +102,10 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
         },
         ctop: { sku: '000.000.000' }
       }]
-      camera: { angle: 0 }
+      camera: {
+        angle: 0,
+        vAngle: 0
+      }
       stage: 'default'
     }
 
@@ -111,7 +117,10 @@ describe('test mycs-hash-image furniture structure hashing lib for the mycs proj
   it('should produce the same hash if camera vAngle attr is missed', (done) ->
 
     struct1 = {
-      camera: { angle: 0 }
+      camera: {
+        angle: 0,
+        vAngle: 0
+      }
       structure: [{
         clegs: {
           back: { sku: '000.000.000' },
