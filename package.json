@@ -1,6 +1,6 @@
 {
   "name": "mycs-hash",
-  "version": "0.0.0",
+  "version": "1.2",
   "description": "Library exposing a generation hashing function for mycs system",
   "homepage": "",
   "repository": "mycsHQ/mycs-hash",
