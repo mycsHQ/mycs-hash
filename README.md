@@ -4,37 +4,20 @@
 
 ## Install
 
-Please adapt examples below with the version you would like to use...
-
-1. client side
-
 ```sh
-$ bower install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
-```
-
-2. server side
-
-```sh
-$ npm install git+ssh://git@github.com/mycsHQ/mycs-hash#v0.2
+$ npm install git+ssh://git@github.com/mycsHQ/mycs-hash
 ```
 
 ## Usage
 
-The function validates that the furniture data structure has :
-- `structure` attribute describing the modules that constitute the piece of furniture
-- `is_label` whether the image created should be a label image or a normal one
-- `furniture_type` the type furniture that is meant to be described by the structure
-- `camera` the camera setup
+The `hashDesign` and `hashImage` functions validate that the furniture data structure according to JSON schemas.
 
 ```js
-var mycsHash = require('mycs-hash');
+const mycsHash = require('mycs-hash');
 
-mycsHash(furnitureDataStructure);
+mycsHash.hashDesign(furnitureDataStructure);
 ```
 
 ## License
 
  © Mycs 2015
-
-
-
