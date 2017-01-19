@@ -1,10 +1,11 @@
-//
-// Class to serialize JSON in stable way :
-// it prevent ordering of the keys. This allows for instance
-// to use the serialized JSON as the input for hash.
-//
+/**
+ * Class to serialize JSON in stable way :
+ * it prevent ordering of the keys. This allows for instance
+ * to use the serialized JSON as the input for hash.
+ *
+ * @class StableJSONStringify
+ */
 class StableJSONStringify {
-
   // ########################
   //
   // Constructor
@@ -27,7 +28,6 @@ class StableJSONStringify {
   // Public methods
   //
   // ########################
-
   stringify(obj) {
     this._init();
     return this._stringify({ '': obj }, '', obj, 0);
@@ -39,7 +39,6 @@ class StableJSONStringify {
   // Private methods
   //
   // ########################
-
   _init() {
     this.opts = {};
     this.space = this.opts.space || '';
@@ -110,4 +109,4 @@ class StableJSONStringify {
   }
 }
 
-export default new StableJSONStringify();
+module.exports = new StableJSONStringify();

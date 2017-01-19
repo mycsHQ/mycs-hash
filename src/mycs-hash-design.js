@@ -1,18 +1,17 @@
 //
 // External dependencies
 //
-import jsSHA from 'jssha';
-import stringifier from './stringify';
-import { Validator as V } from 'jsonschema';
+const jsSHA = require('jssha');
+const stringifier = require('./stringify');
+const V = require('jsonschema').Validator;
+const shelfSchema = require('./json-schemas/shelf.json');
+const couchtableSchema = require('./json-schemas/couchtable.json');
+const tableSchema = require('./json-schemas/table.json');
+const wardrobeSchema = require('./json-schemas/wardrobe.json');
+
 const validator = new V();
 
-import shelfSchema from './json-schemas/shelf.json';
-import couchtableSchema from './json-schemas/couchtable.json';
-import tableSchema from './json-schemas/table.json';
-import wardrobeSchema from './json-schemas/wardrobe.json';
-
 // should be incremented when releasing a new version
-const VERSION = '0.2';
 const HASH_ALGORITHM = 'SHA-1';
 
 //
@@ -36,7 +35,7 @@ const _cloneDeep = obj => JSON.parse(JSON.stringify(obj));
 // @param {object} deserialized json object representing a piece of furniture
 //
 const _validateInput = function (data) {
-  if (!data.hasOwnProperty('structure')) {
+  if (!data.structure) {
     throw new Error('missing structure attribute');
   }
 
@@ -93,4 +92,4 @@ const hashingFunction = function (data) {
   return shaObj.getHMAC('HEX');
 };
 
-export default hashingFunction;
+module.exports = hashingFunction;
