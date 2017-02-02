@@ -106,7 +106,6 @@
           "handles": {
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
             "items": { "$ref": "#/definitions/handle_element" }
           },
           "legPlatforms": {
