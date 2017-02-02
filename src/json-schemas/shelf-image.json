@@ -7,6 +7,10 @@
       "description": "unique id of a component in our furniture component store",
       "pattern": "^(\\d+\\.)+[\\d]+$"
     },
+    "invisible": {
+      "type": "boolean",
+      "description": "determines whether element must be rendered or not"
+    },
     "position": {
       "type": "number",
       "description": "vertical position of the element",
@@ -22,7 +26,8 @@
       "additionalProperties": false,
       "required": [ "sku" ],
       "properties": {
-        "sku": { "$ref": "#/definitions/sku" }
+        "sku": { "$ref": "#/definitions/sku" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "positioned_element": {
@@ -31,7 +36,8 @@
       "required": [ "sku", "position" ],
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
-        "position": { "$ref": "#/definitions/position" }
+        "position": { "$ref": "#/definitions/position" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "horizontally_positioned_element": {
@@ -41,7 +47,8 @@
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "position": { "$ref": "#/definitions/position" },
-        "h_position": { "$ref": "#/definitions/h_position" }
+        "h_position": { "$ref": "#/definitions/h_position" },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     },
     "handle_element": {
@@ -55,7 +62,8 @@
         "type": {
           "type": "string",
           "enum": [ "center", "left", "right" ]
-        }
+        },
+        "invisible": { "$ref": "#/definitions/invisible" }
       }
     }
   },
@@ -106,7 +114,6 @@
           "handles": {
             "type": "array",
             "uniqueItems": true,
-            "minItems": 1,
             "items": { "$ref": "#/definitions/handle_element" }
           },
           "legPlatforms": {
