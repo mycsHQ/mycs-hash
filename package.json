@@ -1,20 +1,21 @@
 {
   "name": "mycs-hash",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Library exposing a generation hashing function for mycs system",
   "homepage": "",
   "repository": "mycsHQ/mycs-hash",
   "author": {
     "name": "Julien Abega",
     "email": "julien@mycs.com",
-    "url": ""
+    "url": "https://github.com/mycsHQ/mycs-hash"
   },
   "files": [
     "src"
   ],
   "main": "./src/index.js",
   "keywords": [
-    "Hash"
+    "Hash",
+    "mycs"
   ],
   "eslintConfig": ".eslintrc.json",
   "devDependencies": {
