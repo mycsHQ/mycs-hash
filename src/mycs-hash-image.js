@@ -7,6 +7,7 @@ const V = require('jsonschema').Validator;
 const shelfSchema = require('./json-schemas/shelf-image.json');
 const couchtableSchema = require('./json-schemas/couchtable.json');
 const tableSchema = require('./json-schemas/table-image.json');
+const sydetableSchema = require('./json-schemas/sydetable.json');
 const wardrobeSchema = require('./json-schemas/wardrobe-image.json');
 const inputDataSchema = require('./json-schemas/image-input-data.json');
 
@@ -39,9 +40,14 @@ const _validateStructure = function (structure) {
   const shelfRes = validator.validate(structure, shelfSchema);
   const couchtableRes = validator.validate(structure, couchtableSchema);
   const tableRes = validator.validate(structure, tableSchema);
+  const sydetableRes = validator.validate(structure, sydetableSchema);
   const wardrobeRes = validator.validate(structure, wardrobeSchema);
 
-  if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
+  if (shelfRes.errors.length
+   && couchtableRes.errors.length
+   && tableRes.errors.length
+   && sydetableRes.errors.length
+   && wardrobeRes.errors.length) {
     const error = new Error('structure is invalid for any existing json-schema');
     error.data = {
       structure,
@@ -49,6 +55,7 @@ const _validateStructure = function (structure) {
         shelf: shelfRes.errors,
         couchtable: couchtableRes.errors,
         table: tableRes.errors,
+        sydetable: sydetableRes.errors,
         wardrobe: wardrobeRes.errors
       }
     };

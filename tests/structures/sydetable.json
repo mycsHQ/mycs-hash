@@ -1,0 +1,26 @@
+{
+  "camera": {
+    "angle": 0,
+    "vAngle": 0
+  },
+  "quality": "hires",
+  "stage": "default",
+  "structure": {
+    "tabletops": {
+      "top": { "sku": "301.100.00" }
+    },
+    "legs": {
+      "front_left": {
+        "sku": "301.102.03"
+      },
+      "front_right": {
+        "sku": "301.102.03"
+      }
+    },
+    "legs_connector": {
+      "bottom": { "sku": "301.102.03" },
+      "top_left": { "sku": "301.102.03" },
+      "top_right": { "sku": "301.102.03" }
+    }
+  }
+}
