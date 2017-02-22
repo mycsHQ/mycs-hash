@@ -59,7 +59,7 @@ var _validateStructure = function (structure) {
   const sydetableRes = validator.validate(structure, sydetableSchema);
   const wardrobeRes = validator.validate(structure, wardrobeSchema);
 
-  if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length) {
+  if (shelfRes.errors.length && couchtableRes.errors.length && tableRes.errors.length && wardrobeRes.errors.length && sydetableRes.errors.length) {
     const error = new Error('structure is invalid for any existing json-schema');
     error.data = {
       structure,
