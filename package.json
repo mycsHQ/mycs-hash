@@ -30,7 +30,7 @@
     "node-uuid": "^1.4.3"
   },
   "scripts": {
-    "test": "node tests/run.js"
+    "test": "babel-node tests/run.js"
   },
   "private": true,
   "dependencies": {
