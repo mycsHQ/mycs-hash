@@ -1,7 +1,7 @@
 //
 // External dependencies
 //
-const jsSHA = require('jssha');
+const jsSHA = require('jssha/sha1');
 const stringifier = require('./stringify');
 const V = require('jsonschema').Validator;
 const shelfSchema = require('./json-schemas/shelf-image.json');
