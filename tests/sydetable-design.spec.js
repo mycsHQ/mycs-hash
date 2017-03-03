@@ -16,13 +16,24 @@ describe('Sydetable with mycs-hash-design', () => {
     throw new Error(`should be throw Exception: ${ keyWords }`);
   };
 
-  it('should not accept input without structure', (done) => {
+  it('should not accept input without structure', done => {
     const input = {};
-    return testException(input, 'missing structure', done);
+    testException(input, 'missing structure', done);
   });
 
-  it('should not accept input with other attributes', (done) => {
+  it('should not accept input with invalid attributes', done => {
     const input = _.pick(sydetable, [ 'structure', 'camera', 'quality' ]);
-    return testException(input, 'structure attribute only', done);
+    testException(input, 'structure attribute only', done);
+  });
+
+  it('should not accept input with invalid structure', done => {
+    const input = _.cloneDeep(_.pick(sydetable, [ 'structure' ]));
+    input.structure.field = {};
+    testException(input, 'structure is invalid', done);
+  });
+
+  it('should accept input with valid structure', () => {
+    const input = _.cloneDeep(_.pick(sydetable, [ 'structure' ]));
+    expect(hashDesign(input)).toEqual('afb3dc5dafc1f45ae59d70453121c98fe1936659');
   });
 });
