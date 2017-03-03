@@ -1,7 +1,8 @@
 {
   "name": "mycs-hash",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Library exposing a generation hashing function for mycs system",
+  "private": true,
   "homepage": "",
   "repository": "mycsHQ/mycs-hash",
   "author": {
@@ -9,15 +10,19 @@
     "email": "julien@mycs.com",
     "url": "https://github.com/mycsHQ/mycs-hash"
   },
+  "main": "./src/index.js",
+  "eslintConfig": ".eslintrc.json",
   "files": [
     "src"
   ],
-  "main": "./src/index.js",
   "keywords": [
     "Hash",
     "mycs"
   ],
-  "eslintConfig": ".eslintrc.json",
+  "scripts": {
+    "test": "babel-node tests/run.js",
+    "test:watch": "./node_modules/nodemon/bin/nodemon.js -w src -w tests ./node_modules/babel-cli/bin/babel-node.js ./node_modules/jasmine/bin/jasmine.js --random=true tests/run.js"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.1",
@@ -27,12 +32,9 @@
     "eslint-plugin-import": "^2.2.0",
     "jasmine": "^2.5.3",
     "lodash": "^3.10.1",
-    "node-uuid": "^1.4.3"
+    "node-uuid": "^1.4.3",
+    "nodemon": "^1.11.0"
   },
-  "scripts": {
-    "test": "babel-node tests/run.js"
-  },
-  "private": true,
   "dependencies": {
     "jsonschema": "github:mycshq/jsonschema#1.1.1",
     "jssha": "^2.0.1"

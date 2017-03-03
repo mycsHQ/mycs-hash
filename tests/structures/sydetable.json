@@ -17,7 +17,7 @@
         "sku": "301.102.03"
       }
     },
-    "legs_connector": {
+    "legs_connectors": {
       "bottom": { "sku": "301.102.03" },
       "top_left": { "sku": "301.102.03" },
       "top_right": { "sku": "301.102.03" }
