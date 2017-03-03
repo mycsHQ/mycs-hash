@@ -72,7 +72,7 @@
     "legs_connectors": {
       "type": "object",
       "additionalProperties": false,
-      "minProperties": 3,
+      "required": [ "bottom", "top_left", "top_right" ],
       "properties": {
         "bottom": { "$ref": "#/definitions/element" },
         "top_left": { "$ref": "#/definitions/element" },
