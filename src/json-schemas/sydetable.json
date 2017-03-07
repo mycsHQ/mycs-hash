@@ -69,7 +69,7 @@
         }
       ]
     },
-    "legs_connectors": {
+    "legs_connector": {
       "type": "object",
       "additionalProperties": false,
       "required": [ "bottom", "top_left", "top_right" ],

@@ -34,6 +34,6 @@ describe('Sydetable with mycs-hash-design', () => {
 
   it('should accept input with valid structure', () => {
     const input = _.cloneDeep(_.pick(sydetable, [ 'structure' ]));
-    expect(hashDesign(input)).toEqual('afb3dc5dafc1f45ae59d70453121c98fe1936659');
+    expect(hashDesign(input)).toEqual('968e9833e8ce68fcd11aff7aff91867fbe66a125');
   });
 });
