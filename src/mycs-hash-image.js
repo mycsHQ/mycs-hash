@@ -49,6 +49,12 @@ const _validateInput = function (data) {
     throw new Error(`invalid input: ${ result.errors }`);
   }
 
+  // TODO add better validation
+  // for new generation structures
+  if (data.structure.props) {
+    return;
+  }
+
   if (data.quality !== 'label') {
     return _validateStructure(data.structure);
   }
