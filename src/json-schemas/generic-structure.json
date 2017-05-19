@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://mycs.com/schemas/furniture/generic_structure",
+  "type": "object",
+  "required": [ "container" ],
+  "properties": {
+    "$ref": "#/definitions/node"
+  },
+  "definitions": {
+    "sku": {
+      "type": "string",
+      "description": "unique id of a component in our furniture component store",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "cover_sku": {
+      "type": "string",
+      "description": "unique id that defines the texture applied to a furniture component",
+      "pattern": "^(\\d+\\.)+[\\d]+$"
+    },
+    "invisible": {
+      "type": "boolean",
+      "description": "defines whether a node must be rendered"
+    },
+    "flow": {
+      "type": "string",
+      "description": "defines the flow position for new direct children elements",
+      "enum": [ "x", "y", "z" ]
+    },
+    "x": {
+      "type": "number",
+      "description": "defines the X position of a container"
+    },
+    "y": {
+      "type": "number",
+      "description": "defines the Y position of a container"
+    },
+    "z": {
+      "type": "number",
+      "description": "defines the Z position of a container"
+    },
+    "align_x": {
+      "type": "string",
+      "description": "defines the X axis alignment in regards to its parent",
+      "enum": [ "max", "min" ]
+    },
+    "align_y": {
+      "type": "string",
+      "description": "defines the Y axis alignment in regards to its parent",
+      "enum": [ "max", "min" ]
+    },
+    "align_z": {
+      "type": "string",
+      "description": "defines the Z axis alignment in regards to its parent",
+      "enum": [ "max", "min" ]
+    },
+    "margin_x": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the X margin of the current container"
+    },
+    "margin_y": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the Y margin of the current container"
+    },
+    "margin_z": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the Z margin of the current container"
+    },
+    "padding_x": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the X internal padding of the current container"
+    },
+    "padding_y": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the Y internal padding of the current container"
+    },
+    "padding_z": {
+      "anyOf": [
+        { "type": "number" },
+        { "type": "array", "minItems": 1, "maxItems": 2, "items": { "type": "number" }}
+      ],
+      "description": "defines the Z internal padding of the current container"
+    },
+    "node": {
+      "type": "object",
+      "description": "node representing a branch in the tree",
+      "required": [ "container" ],
+      "properties": {
+        "container": { "$ref": "#/definitions/container" },
+        "props": { "$ref": "#/definitions/props" },
+        "children": { "$ref": "#/definitions/children" }
+      }
+    },
+    "container": {
+      "type": "string",
+      "description": "normalized node identifier name",
+      "minLength": 1,
+      "pattern": "^[a-z0-9_\\-\\+]+$"
+    },
+    "props": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "sku": { "$ref": "#/definitions/sku" },
+        "cover_sku": { "$ref": "#/definitions/cover_sku" },
+        "invisible": { "$ref": "#/definitions/invisible" },
+        "flow": { "$ref": "#/definitions/flow" },
+        "x": { "$ref": "#/definitions/x" },
+        "y": { "$ref": "#/definitions/y" },
+        "z": { "$ref": "#/definitions/z" },
+        "align_x": { "$ref": "#/definitions/align_x" },
+        "align_y": { "$ref": "#/definitions/align_y" },
+        "align_z": { "$ref": "#/definitions/align_z" },
+        "margin_x": { "$ref": "#/definitions/margin_x" },
+        "margin_y": { "$ref": "#/definitions/margin_y" },
+        "margin_z": { "$ref": "#/definitions/margin_z" },
+        "padding_x": { "$ref": "#/definitions/padding_x" },
+        "padding_y": { "$ref": "#/definitions/padding_y" },
+        "padding_z": { "$ref": "#/definitions/padding_z" }
+      }
+    },
+    "children": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/node"
+      }
+    }
+  }
+}

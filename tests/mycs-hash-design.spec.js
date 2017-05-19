@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import hashDesign from '../src/mycs-hash-design.js';
-import shelf from './structures/shelf';
+import hashDesign from '../src/mycs-hash-design';
+import shelf from './structures/shelf.json';
 
 
-describe('test mycs-hash-design furniture structure hashing lib for the mycs project', () => {
+describe('Test mycs-hash-design furniture structure hashing lib for the mycs project', () => {
   const testException = function (input, keyWords, done) {
     try {
       hashDesign(input);

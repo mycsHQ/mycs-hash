@@ -1,0 +1,179 @@
+{
+  "camera": {
+    "angle": -30,
+    "vAngle": -30
+  },
+  "quality": "hires",
+  "stage": "default",
+  "structure": {
+    "container": "joyn",
+    "props": {
+      "flow": "x"
+    },
+    "children": [
+      {
+        "container": "edge-1200-left",
+        "props": {
+          "flow": "x"
+        },
+        "children": [
+          {
+            "container": "edge_submodule",
+            "props": {
+              "flow": "z"
+            },
+            "children": [
+              {
+                "container": "base",
+                "props": {
+                  "sku": "551.101.00",
+                  "cover_sku": "551.310.14",
+                  "align_y": "max"
+                }
+              },
+              {
+                "container": "sitting_elements",
+                "props": {
+                  "flow": "y",
+                  "align_y": "max"
+                },
+                "children": [
+                  {
+                    "container": "cushions",
+                    "props": {
+                      "flow": "x"
+                    },
+                    "children": [
+                      {
+                        "container": "cushion",
+                        "props": {
+                          "flow": "z"
+                        },
+                        "children": [
+                          {
+                            "container": "end_cushion_right",
+                            "props": {
+                              "sku": "551.142.00",
+                              "cover_sku": "551.310.16",
+                              "margin_y": [ 0, -16 ]
+                            }
+                          },
+                          {
+                            "container": "back_cushion",
+                            "props": {
+                              "sku": "551.136.00",
+                              "cover_sku": "551.310.16",
+                              "align_x": "max",
+                              "align_y": "max"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "container": "backrest",
+                    "props": {
+                      "sku": "551.111.00",
+                      "cover_sku": "551.310.16",
+                      "align_x": "max"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "container": "extension-800",
+        "props": {
+          "flow": "z"
+        },
+        "children": [
+          {
+            "container": "base-container",
+            "props": {
+              "flow": "y",
+              "align_y": "max"
+            },
+            "children": [
+              {
+                "container": "base_extension",
+                "props": {
+                  "sku": "551.107.00",
+                  "cover_sku": "551.310.14",
+                  "align_y": "max"
+                }
+              },
+              {
+                "container": "base",
+                "props": {
+                  "sku": "551.100.00",
+                  "cover_sku": "551.310.14",
+                  "align_y": "max"
+                }
+              }
+            ]
+          },
+          {
+            "container": "sitting_elements",
+            "props": {
+              "flow": "y",
+              "align_y": "max"
+            },
+            "children": [
+              {
+                "container": "cushions",
+                "props": {
+                  "flow": "z"
+                },
+                "children": [
+                  {
+                    "container": "l_cushion",
+                    "props": {
+                      "sku": "551.128.00",
+                      "cover_sku": "551.310.16"
+                    }
+                  },
+                  {
+                    "container": "back_cushion",
+                    "props": {
+                      "sku": "551.136.00",
+                      "cover_sku": "551.310.16",
+                      "align_y": "max"
+                    }
+                  }
+                ]
+              },
+              {
+                "container": "backrest",
+                "props": {
+                  "sku": "551.111.00",
+                  "cover_sku": "551.310.16"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "container": "armrest",
+        "props": {
+          "flow": "y",
+          "align_y": "max"
+        },
+        "children": [
+          {
+            "container": "armrest_right",
+            "props": {
+              "cover_sku": "551.310.14",
+              "sku": "551.116.00",
+              "margin_x": [ -12, 0 ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
