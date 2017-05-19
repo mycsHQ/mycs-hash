@@ -17,7 +17,7 @@
       "description": "unique id that defines the texture applied to a furniture component",
       "pattern": "^(\\d+\\.)+[\\d]+$"
     },
-    "invisible": {
+    "hidden": {
       "type": "boolean",
       "description": "defines whether a node must be rendered"
     },
@@ -118,7 +118,7 @@
       "properties": {
         "sku": { "$ref": "#/definitions/sku" },
         "cover_sku": { "$ref": "#/definitions/cover_sku" },
-        "invisible": { "$ref": "#/definitions/invisible" },
+        "hidden": { "$ref": "#/definitions/hidden" },
         "flow": { "$ref": "#/definitions/flow" },
         "x": { "$ref": "#/definitions/x" },
         "y": { "$ref": "#/definitions/y" },
