@@ -24,7 +24,8 @@
       "required": [ "angle", "vAngle" ],
       "properties": {
         "angle": { "type": "number" },
-        "vAngle": { "type": "number" }
+        "vAngle": { "type": "number" },
+        "distance": { "type": "number" }
       }
     }
   }
