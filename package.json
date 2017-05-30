@@ -1,6 +1,6 @@
 {
   "name": "mycs-hash",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Library exposing a generation hashing function for mycs system",
   "private": true,
   "homepage": "",
