@@ -21,11 +21,33 @@
     "camera": {
       "type": "object",
       "additionalProperties": false,
-      "required": [ "angle", "vAngle" ],
+      "required": [ "vAngle" ],
       "properties": {
         "angle": { "type": "number" },
+        "hAngle": { "type": "number" },
         "vAngle": { "type": "number" },
-        "distance": { "type": "number" }
+        "distance": { "type": "number" },
+        "autozoom": { "type": "boolean" },
+        "height": { "type": "number" },
+        "width": { "type": "number" }
+      }
+    },
+    "processing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "noise", "samples" ],
+      "properties": {
+        "noise": { "type": "number" },
+        "samples": { "type": "number" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [ "numberOfFrames", "alpha" ],
+      "properties": {
+        "numberOfFrames": { "type": "number" },
+        "alpha": { "type": "number" }
       }
     }
   }
