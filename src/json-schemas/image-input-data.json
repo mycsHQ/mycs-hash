@@ -38,7 +38,9 @@
       "required": [ "noise", "samples" ],
       "properties": {
         "noise": { "type": "number" },
-        "samples": { "type": "number" }
+        "samples": { "type": "number" },
+        "floor": { "type": "array" },
+        "no_intermediate": { "type": "boolean" }
       }
     },
     "animation": {
