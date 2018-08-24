@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import uuid from 'node-uuid';
 import hashDesign from '../src/mycs-hash-design.js';
 import sydetable from './structures/sydetable';
 

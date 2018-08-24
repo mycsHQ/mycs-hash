@@ -19,8 +19,8 @@
     "mycs"
   ],
   "scripts": {
-    "test": "babel-node tests/run.js",
-    "test:watch": "./node_modules/nodemon/bin/nodemon.js -w src -w tests ./node_modules/babel-cli/bin/babel-node.js ./node_modules/jasmine/bin/jasmine.js --random=true tests/run.js"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "husky": {
     "hooks": {
@@ -36,6 +36,7 @@
     "eslint-plugin-import": "^2.2.0",
     "husky": "^1.0.0-rc.13",
     "jasmine": "^2.5.3",
+    "jest": "^23.5.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.10",
     "node-uuid": "^1.4.3",
