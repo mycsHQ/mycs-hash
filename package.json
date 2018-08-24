@@ -35,12 +35,8 @@
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "husky": "^1.0.0-rc.13",
-    "jasmine": "^2.5.3",
     "jest": "^23.5.0",
-    "json-loader": "^0.5.4",
-    "lodash": "^4.17.10",
-    "node-uuid": "^1.4.3",
-    "nodemon": "^1.11.0"
+    "lodash": "^4.17.10"
   },
   "dependencies": {
     "jsonschema": "github:mycshq/jsonschema#1.1.1",
