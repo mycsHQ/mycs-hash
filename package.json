@@ -3,7 +3,6 @@
   "version": "1.4.2",
   "description": "Library exposing a generation hashing function for mycs system",
   "private": true,
-  "homepage": "",
   "repository": "mycsHQ/mycs-hash",
   "author": {
     "name": "Julien Abega",
@@ -20,8 +19,13 @@
     "mycs"
   ],
   "scripts": {
-    "test": "babel-node tests/run.js",
-    "test:watch": "./node_modules/nodemon/bin/nodemon.js -w src -w tests ./node_modules/babel-cli/bin/babel-node.js ./node_modules/jasmine/bin/jasmine.js --random=true tests/run.js"
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -30,11 +34,9 @@
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "jasmine": "^2.5.3",
-    "json-loader": "^0.5.4",
-    "lodash": "^3.10.1",
-    "node-uuid": "^1.4.3",
-    "nodemon": "^1.11.0"
+    "husky": "^1.0.0-rc.13",
+    "jest": "^23.5.0",
+    "lodash": "^4.17.10"
   },
   "dependencies": {
     "jsonschema": "github:mycshq/jsonschema#1.1.1",

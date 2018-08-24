@@ -10,6 +10,8 @@ describe('Test mycs-hash-design furniture structure hashing lib for the mycs pro
     } catch (e) {
       expect(e.message.indexOf(keyWords) >= 0).toBe(true);
       done();
+
+      return;
     }
 
     throw new Error(`should be throw Exception: ${ keyWords }`);

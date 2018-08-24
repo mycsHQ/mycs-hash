@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import uuid from 'node-uuid';
 import hashDesign from '../src/mycs-hash-design.js';
 import sydetable from './structures/sydetable';
 
@@ -11,6 +10,8 @@ describe('Sydetable with mycs-hash-design', () => {
     } catch (e) {
       expect(e.message.indexOf(keyWords) >= 0).toBe(true);
       done();
+
+      return
     }
 
     throw new Error(`should be throw Exception: ${ keyWords }`);

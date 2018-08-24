@@ -1,0 +1,39 @@
+version: 2
+aliases:
+  - &defaults
+    docker:
+      - image: circleci/node:8
+
+  - &restore_node_modules
+    restore_cache:
+      keys:
+        - node-modules-{{ checksum "yarn.lock" }}
+        - node-modules-
+
+jobs:
+  init:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+          key: node-modules-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_node_modules
+      - run: npm test
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - init
+      - test:
+          requires:
+            - init
