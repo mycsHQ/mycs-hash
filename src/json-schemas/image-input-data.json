@@ -23,6 +23,7 @@
       "additionalProperties": false,
       "required": [ "vAngle" ],
       "properties": {
+        "fov": { "type": "number" },
         "angle": { "type": "number" },
         "hAngle": { "type": "number" },
         "vAngle": { "type": "number" },
@@ -40,7 +41,13 @@
         "noise": { "type": "number" },
         "samples": { "type": "number" },
         "floor": { "type": "array" },
-        "no_intermediate": { "type": "boolean" }
+        "no_intermediate": { "type": "boolean" },
+        "floor_luminance": { "type": "number" },
+        "envmap_name": { "type": "string" },
+        "exposure": { "type": "number" },
+        "gamma": { "type": "number" },
+        "hist_min": { "type": "number" },
+        "hist_max": { "type": "number" }
       }
     },
     "animation": {
