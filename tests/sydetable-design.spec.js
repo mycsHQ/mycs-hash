@@ -11,6 +11,8 @@ describe('Sydetable with mycs-hash-design', () => {
     } catch (e) {
       expect(e.message.indexOf(keyWords) >= 0).toBe(true);
       done();
+
+      return
     }
 
     throw new Error(`should be throw Exception: ${ keyWords }`);
