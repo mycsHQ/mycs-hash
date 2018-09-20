@@ -4,29 +4,6 @@ import shelf from './structures/shelf.json';
 
 
 describe('Test mycs-hash-design furniture structure hashing lib for the mycs project', () => {
-  const testException = function (input, keyWords, done) {
-    try {
-      hashDesign(input);
-    } catch (e) {
-      expect(e.message.indexOf(keyWords) >= 0).toBe(true);
-      done();
-
-      return;
-    }
-
-    throw new Error(`should be throw Exception: ${ keyWords }`);
-  };
-
-  it('should not accept input without structure', done => {
-    const input = {};
-    testException(input, 'missing structure', done);
-  });
-
-  it('should not accept input with invalid attributes', done => {
-    const input = _.pick(shelf, [ 'structure', 'camera', 'quality' ]);
-    testException(input, 'structure attribute only', done);
-  });
-
   it('should produce the same hash for different attribute order', () => {
     const struct1 = {
       structure: [ {
@@ -51,12 +28,6 @@ describe('Test mycs-hash-design furniture structure hashing lib for the mycs pro
     };
 
     expect(hashDesign(struct1)).toEqual(hashDesign(struct2));
-  });
-
-  it('should not accept input with invalid structure', done => {
-    const input = _.cloneDeep(_.pick(shelf, [ 'structure' ]));
-    input.structure.field = {};
-    testException(input, 'structure is invalid', done);
   });
 
   return it('should produce the expected hash', () => {
