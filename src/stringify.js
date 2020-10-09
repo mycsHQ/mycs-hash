@@ -79,10 +79,6 @@ class StableJSONStringify {
         const item = this._stringify(node, i, node[i], level + 1) || JSON.stringify(null);
         out.push(indent + this.space + item);
       }
-
-      // Sort the array of JSON strings alphabetically
-      out.sort();
-
       return `[${ out.join(',') }${ indent }]`;
     } else {
       if (this.seen.indexOf(node) !== -1) {
